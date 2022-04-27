@@ -1,69 +1,92 @@
 <template>
-  <DefaultLayout>
-    <section class="w-full px-6 pb-12 antialiased bg-white bg">
-      <div class="mx-auto container">
-        <NavBar />
-        <div
-          class="container py-24 md:py-36 mx-auto text-left md:max-w-none md:text-center"
-        >
-          <h1
-            class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-normal text-left text-gray-900 md:text-center sm:leading-none"
-          >
-            <span class="inline md:block">Spend more time Building</span>
-            <span
-              class="relative mt-2 bg-clip-text gradient md:inline-block pl-3"
-            >
-              and less time Coding</span
-            >
-          </h1>
-          <div
-            class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-4xl md:text-center lg:text-lg"
-          >
-            An Open Source Project that is focused on helping you spend less
-            time on coding UI designs and more time building the actual
-            application by providing already made components and pages
-          </div>
-          <div class="flex flex-col items-center mt-12 text-center">
-            <span class="relative flex flex-wrap w-full md:w-auto gap-4">
-              <router-link to="/" class="btn"> Get Started </router-link>
-              <router-link to="/stage" class="btn"> Stage </router-link>
-              <router-link to="/components" class="btn">
-                components
-              </router-link>
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </DefaultLayout>
+	<DefaultLayout class="bg-dark min-h-screen overflow-hidden">
+		<NavBar  />
+		<section class="px-4 py-32  md:px-8 bg-dark">
+			<div class="container items-center  mx-auto">
+				<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
+					<div class="w-full md:w-1/2 md:px-3">
+						<div
+							class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0"
+						>
+							<h1
+								class="w-auto md:w-[35rem] text-4xl font-extrabold py-4 tracking-tight !leading-[0.95] text-blue sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl gradient"
+							>
+								Have Fun With Friends Gaming
+							</h1> 
+							<p
+								class="mx-auto text-base text-white sm:max-w-md lg:text-xl md:max-w-3xl md:!leading-8"
+							>
+								Gamexit is a platform focused on connecting people using games play on the web. Create a 1v1 or tournament challenge and invite your friends
+							</p>
+							<div class="relative flex flex-col sm:flex-row sm:space-x-4">
+						
+								<a
+									href="#_"
+									class="flex items-center px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
+								>
+									Get Started for Free 
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
+					
+						<img
+							src="../assets/images/hero1.svg"
+							class="absolute top-0 left-[-20px] float"
+						/>
+						<img
+							src="../assets/images/hero2.svg"
+							class="absolute top-0  right-[-24px] object-contain float !delay-150"
+						/>
+						<img
+							src="../assets/images/hero3.svg"
+							class="absolute bottom-0 right-[-24px] float"
+						/>
+						<img
+							src="../assets/images/hero4.svg"
+							class="absolute bottom-0 left-[-20px] float"
+						/>
+
+						<img
+							src="../assets/images/hero.svg"
+							class="w-[24rem] "
+						/>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</DefaultLayout>
 </template>
 
 <script lang="ts" setup>
-import NavBar from "@/components/NavBar.vue";
-import DefaultLayout from "../layouts/defaultLayout.vue";
+import NavBar from '@/components/NavBar.vue'
+import DefaultLayout from '../layouts/defaultLayout.vue'
 </script>
 
 <style scoped>
-.bg {
-  background-blend-mode: lighten;
-}
-
 .gradient {
-  text-align: center;
-  color: #4f46e5;
-  background-image: -webkit-linear-gradient(92deg, #3426f3, #feab3a);
-  background-clip: text;
-  text-fill-color: transparent;
-  animation: hue 10s infinite linear;
+ font-size: 67px;
+  background: -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* animation: hue 10s infinite linear; */
 }
-
-@keyframes hue {
-  from {
-    -webkit-filter: hue-rotate(0deg);
-  }
-  to {
-    -webkit-filter: hue-rotate(-360deg);
-  }
+.float{
+	  animation: float 4.5s infinite linear;
+}
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-30px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }
 </style>
 

@@ -5,11 +5,9 @@
 @tailwind utilities;
 
 * {
-  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Poppins', sans-serif;
 }
-body {
-  background-color: aliceblue;
-}
+
 
 ::-webkit-scrollbar {
   width: 8px; /* Remove scrollbar space */

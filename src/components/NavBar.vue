@@ -1,45 +1,47 @@
 <template>
-  <!-- Section 1 -->
-  <section class="relative w-full px-8 text-gray-700 bg-white body-font">
-    <div
-      class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl"
-    >
-      <a
-        href="#_"
-        class="relative flex items-center w-auto text-xl font-extrabold leading-none text-black select-none"
-        >tails.</a
-      >
+	<section class="relative w-full px-8 text-white bg-dark" >
+		<div
+			class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl"
+		>
+			<a
+				href="#_"
+				class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none"
+			>GAMEXIT.</a
+			>
 
-      <nav class="flex items-center justify-center w-auto h-full text-base">
-        <a href="#_" class="mr-5 relative font-medium leading-6 text-gray-600">
-          <span class="block">Home</span>
-        </a>
-        <a href="#_" class="mr-5 relative font-medium leading-6 text-gray-600">
-          <span class="block">Features</span>
-        </a>
-        <a href="#_" class="mr-5 relative font-medium leading-6 text-gray-600">
-          <span class="block">Pricing</span>
-        </a>
-        <a href="#_" class="mr-5 relative font-medium leading-6 text-gray-600">
-          <span class="block">Blog</span>
-        </a>
-      </nav>
+			<nav class="flex items-center justify-center w-auto h-full text-base">
+				<router-link to="/" class="mr-5 relative font-medium hover:text-blue ">
+					<span class="block">Home</span>
+				</router-link>
+				<router-link to="/#about" class="mr-5 relative font-medium hover:text-blue ">
+					<span class="block">About</span>
+				</router-link>
+				<router-link to="/#feature" class="mr-5 relative font-medium hover:text-blue ">
+					<span class="block">Features</span>
+				</router-link>
+		
+			</nav>
 
-      <div class="flex items-center">
-        <a
-          href="#"
-          class="mr-4 inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-gray-600"
-        >
-          Sign in
-        </a>
+			<div class="flex items-center">
+				<button
+					to=""
+					class="mr-4 inline-flex items-center justify-center px-6 py-2 text-base font-medium leading-6 bg-white text-primary rounded-full"
+				>
+					Sign in
+				</button>
 
-        <a
-          href="#"
-          class="ml-3 flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white bg-primary rounded-md"
-        >
-          Sign up
-        </a>
-      </div>
-    </div>
-  </section>
+				<button
+					to=""
+					class=" flex items-center justify-center px-6 py-2 text-base font-medium leading-6 text-white bg-primary rounded-full"
+				>
+					Create Account
+				</button>
+			</div>
+		</div>
+	</section>
 </template>
+
+
+<style>
+
+</style>
