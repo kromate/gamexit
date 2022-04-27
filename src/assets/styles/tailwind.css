@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  /* font-family: 'Poppins', sans-serif; */
+}
+body {
+  background-color: aliceblue;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Remove scrollbar space */
+  height: 6px; /* Remove scrollbar space */
+  background: #7483bf4e; /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #4e46e588;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+@layer components {
+  .btn {
+    @apply flex items-center justify-center w-auto px-8 md:py-3.5 py-2.5  text-base font-bold  text-white bg-primary rounded-md  hover:bg-indigo-500;
+  }
+  .btn-outline {
+    @apply flex items-center justify-center w-auto px-8 md:py-3.5 py-2.5  text-base font-bold  text-primary border border-primary rounded-md;
+  }
+  .pc {
+    @apply hidden md:flex;
+  }
+  .mobile {
+    @apply md:hidden flex;
+  }
+  .card {
+    @apply rounded-md shadow-xl bg-white;
+  }
+}
