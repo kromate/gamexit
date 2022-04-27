@@ -1,44 +1,44 @@
 <template>
-  <transition name="fade" appear>
-    <div
-      class="body fixed flex justify-center flex-col items-center w-screen z-50 inset-0"
-      v-if="active"
-    >
-      <div class="boxes">
-        <div class="box">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="box">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="box">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="box">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+	<transition name="fade" appear>
+		<div
+			class="body fixed flex justify-center flex-col items-center w-screen z-50 inset-0"
+			v-if="active"
+		>
+			<div class="boxes">
+				<div class="box">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="box">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="box">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="box">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
 
-      <p class="text-2xl mt-36 text-center max-w-[45rem] px-4">{{ message }}</p>
-    </div>
-  </transition>
+			<p class="text-2xl mt-36 text-center max-w-[45rem] px-4">{{ message }}</p>
+		</div>
+	</transition>
 </template>
 
 <script lang="ts" setup>
-import { useLoading } from "../../composables/useNotification";
-const { active, message } = useLoading();
+import { useLoading } from '../../composables/useNotification'
+const { active, message } = useLoading()
 </script>
 
 <style scoped>

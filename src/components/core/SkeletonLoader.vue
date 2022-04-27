@@ -1,25 +1,25 @@
 <template>
-  <div
-    class="pulsate"
-    :style="{ width: width, height: height, 'border-radius': radius }"
-  ></div>
+	<div
+		class="pulsate"
+		:style="{ width: width, height: height, 'border-radius': radius }"
+	></div>
 </template>
 
 <script lang="ts" setup>
 defineProps({
-  width: {
-    default: "100%",
-    type: String,
-  },
-  height: {
-    default: "100%",
-    type: String,
-  },
-  radius: {
-    default: "0px",
-    type: String,
-  },
-});
+	width: {
+		default: '100%',
+		type: String,
+	},
+	height: {
+		default: '100%',
+		type: String,
+	},
+	radius: {
+		default: '0px',
+		type: String,
+	},
+})
 </script>
 
 <style scoped>
