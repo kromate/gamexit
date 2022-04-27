@@ -1,7 +1,7 @@
 <template>
-	<DefaultLayout class="bg-dark min-h-screen overflow-hidden">
+	<DefaultLayout class="bg-dark min-h-screen overflow-hidden grad">
 		<NavBar  />
-		<section class="px-4 py-32  md:px-8 bg-dark">
+		<section class="px-4 py-32  md:px-8 bg-transparent ">
 			<div class="container items-center  mx-auto">
 				<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
 					<div class="w-full md:w-1/2 md:px-3">
@@ -62,17 +62,33 @@
 </template>
 
 <script lang="ts" setup>
+import {onMounted} from 'vue'
 import NavBar from '@/components/NavBar.vue'
 import DefaultLayout from '../layouts/defaultLayout.vue'
+
+onMounted(()=>{
+	const gradient = document.querySelector('.grad')
+
+	function onMouseMove(event) {
+		gradient.style.backgroundImage = 'radial-gradient(at ' + event.clientX + 'px ' + event.clientY + 'px, rgba(159,0,191,.9) 0, #4D4FA7 100%)'
+	}
+	document.addEventListener('mousemove', onMouseMove)
+})
+
+
 </script>
 
-<style scoped>
+<style >
 .gradient {
  font-size: 67px;
   background: -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* animation: hue 10s infinite linear; */
+  cursor: pointer;
+
+}
+.gradient:hover{
+  animation: hue 1s infinite linear;
 }
 .float{
 	  animation: float 4.5s infinite linear;
@@ -87,6 +103,15 @@ import DefaultLayout from '../layouts/defaultLayout.vue'
 	100% {
 		transform: translatey(0px);
 	}
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
 }
 </style>
 

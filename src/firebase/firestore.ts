@@ -14,13 +14,12 @@ import {
 } from "firebase/firestore";
 import { useUser } from "../composables/useGlobals";
 import { useLoading, useAlert } from "../composables/useNotification";
-import { savedComp } from "../composables/useStage";
 
 const { user } = useUser();
 const { openLoading, closeLoading } = useLoading();
 export const db = getFirestore(app);
 
-let result = [];
+let result: any[] = [];
 const pageBlockRef = collection(db, "pageBlocks");
 
 export const savepageBlock = async () => {
@@ -30,11 +29,9 @@ export const savepageBlock = async () => {
     const id = uuidv4();
     await setDoc(doc(db, "pageBlocks", id), {
       date: Date(),
-      pageBlogArr: savedComp.value,
       userId,
       id,
     });
-    savedComp.value = [];
     closeLoading();
     location.assign("/pageBlock");
   } else {
