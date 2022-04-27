@@ -33,19 +33,19 @@
 					
 						<img
 							src="../assets/images/hero1.svg"
-							class="absolute top-0 left-[-20px] float"
+							class="absolute top-0 left-[-20px] floatT"
 						/>
 						<img
 							src="../assets/images/hero2.svg"
-							class="absolute top-0  right-[-24px] object-contain float !delay-150"
+							class="absolute top-0  right-[-24px] object-contain floatT"
 						/>
 						<img
 							src="../assets/images/hero3.svg"
-							class="absolute bottom-0 right-[-24px] float"
+							class="absolute bottom-0 right-[-24px] floatB"
 						/>
 						<img
 							src="../assets/images/hero4.svg"
-							class="absolute bottom-0 left-[-20px] float"
+							class="absolute bottom-0 left-[-20px] floatB"
 						/>
 
 						<img
@@ -68,12 +68,14 @@ import DefaultLayout from '../layouts/defaultLayout.vue'
 
 onMounted(()=>{
 	const gradient = document.querySelector<HTMLElement>('.grad')
-
-	function onMouseMove(event) {
+	if(gradient){
+		const onMouseMove = (event)=> {
 		gradient!.style.backgroundImage = 'radial-gradient(at ' + event!.clientX + 
 		'px ' + event!.clientY + 'px, rgba(159,0,191,.9) 0, #4D4FA7 100%)'
+		}
+		document.addEventListener('mousemove', onMouseMove)
 	}
-	document.addEventListener('mousemove', onMouseMove)
+
 })
 
 
@@ -91,19 +93,25 @@ onMounted(()=>{
 .gradient:hover{
   animation: hue 1s infinite linear;
 }
-.float{
-	  animation: float 4.5s infinite linear;
+.delay{
+
 }
-@keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-30px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
+.floatT{
+	  animation: floatA 4.5s infinite linear;
+}
+.floatB{
+	  animation: floatB 4.5s  infinite linear;
+	 animation-direction: alternate, reverse, normal;
+}
+@keyframes floatA {
+	0% {transform: translatey(0px)}
+	50% {transform: translatey(-30px)}
+	100% {transform: translatey(0px)}
+}
+@keyframes floatB {
+	0% {transform: translatey(-30px)}
+	50% {transform: translatey(0px)}
+	100% {transform: translatey(-30px)}
 }
 
 @keyframes hue {
