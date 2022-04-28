@@ -1,4 +1,3 @@
-
 import { useSocketServer } from 'socket-controllers'
 import { Server } from 'socket.io'
 
@@ -17,4 +16,3 @@ export default (httpServer) => {
 
   return io
 }
-
