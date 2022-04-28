@@ -2,7 +2,8 @@
   "name": "functions",
   "scripts": {
     "build": "tsc",
-    "dev": "npm run build && firebase emulators:start --only functions",
+    "dev": "nodemon",
+    "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
