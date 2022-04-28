@@ -3,8 +3,8 @@ import {
   OnConnect,
   SocketController,
   SocketIO,
-} from "socket-controllers";
-import { Socket, Server } from "socket.io";
+} from 'socket-controllers'
+import { Socket, Server } from 'socket.io'
 
 @SocketController()
 export class MainController {
@@ -13,10 +13,10 @@ export class MainController {
     @ConnectedSocket() socket: Socket,
     @SocketIO() io: Server
   ) {
-    console.log("New Socket connected: ", socket.id);
+    console.log('New Socket connected: ', socket.id)
 
-    socket.on("custom_event", (data: any) => {
-      console.log("Data: ", data);
-    });
+    socket.on('custom_event', (data: any) => {
+      console.log('Data: ', data)
+    })
   }
 }
