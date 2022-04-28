@@ -1,5 +1,5 @@
 import { io, Socket } from 'socket.io-client'
-import { DefaultEventsMap } from 'socket.io-client/build/typed-events'
+import { DefaultEventsMap } from 'socket.io-client/build/cjs'
 
 class SocketService {
   public socket: Socket | null = null
