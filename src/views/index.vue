@@ -1,7 +1,7 @@
 <template>
 	<DefaultLayout class="bg-dark min-h-screen overflow-hidden ">
 		<NavBar  />
-		<section class="px-4 py-32  md:px-8 bg-transparent ">
+		<section class="px-4 py-28  md:px-8 bg-transparent ">
 			<div class="container items-center  mx-auto">
 				<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
 					<div class="w-full md:w-1/2 md:px-3">
@@ -32,24 +32,24 @@
 					<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
 					
 						<img
-							src="../assets/images/hero1.svg"
-							class="absolute top-0 left-[-20px] floatT"
+							src="../assets/images/hero1.png"
+							class="absolute top-0 md:left-[-20px]  floatT "
 						/>
 						<img
-							src="../assets/images/hero2.svg"
-							class="absolute top-0  right-[-24px] object-contain floatT"
+							src="../assets/images/hero2.png"
+							class="absolute top-[-50px]  right-[-50px] md:top-0  md:ight-[-24px]  floatT"
 						/>
 						<img
-							src="../assets/images/hero3.svg"
-							class="absolute bottom-0 right-[-24px] floatB"
+							src="../assets/images/hero3.png"
+							class="absolute bottom-0 md:right-[-24px] floatB "
 						/>
 						<img
-							src="../assets/images/hero4.svg"
-							class="absolute bottom-0 left-[-20px] floatB"
+							src="../assets/images/hero4.png"
+							class="absolute bottom-[-30px] left-[-100px] md:left-[-20px] floatB md:bottom-0"
 						/>
 
 						<img
-							src="../assets/images/hero.svg"
+							src="../assets/images/hero.png"
 							class="w-[24rem] "
 						/>
 
