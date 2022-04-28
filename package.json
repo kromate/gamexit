@@ -17,6 +17,7 @@
     "@vueuse/core": "^8.2.3",
     "firebase": "^9.6.10",
     "gsap": "^3.10.2",
+    "socket.io": "^4.5.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.25",
     "vue-router": "4",
