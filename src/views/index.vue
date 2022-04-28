@@ -32,19 +32,19 @@
 					
 						<img
 							src="../assets/images/hero1.png"
-							class="absolute top-0 md:left-[-20px]  floatT "
+							class="absolute top-0 md:left-[25%]  floatT "
 						/>
 						<img
 							src="../assets/images/hero2.png"
-							class="absolute top-[-50px]  right-[-50px] md:top-0  md:ight-[-24px]  floatT"
+							class="absolute top-[-50px]  right-[-50px] md:top-0  md:right-0 xl:right-[15%]  floatT"
 						/>
 						<img
 							src="../assets/images/hero3.png"
-							class="absolute bottom-0 md:right-[-24px] floatB "
+							class="absolute bottom-0 md:right-[20%] xl:right-[30%] floatB "
 						/>
 						<img
 							src="../assets/images/hero4.png"
-							class="absolute bottom-[-30px] left-[-100px] md:left-[-20px] floatB md:bottom-0"
+							class="absolute bottom-[-30px] left-[-100px] md:left-[-20px] xl:left-[10%] floatB md:bottom-0"
 						/>
 
 						<img
