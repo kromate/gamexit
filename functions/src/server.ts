@@ -4,7 +4,7 @@
 /**
  * Module dependencies.
  */
-
+import * as functions from 'firebase-functions'
 import 'reflect-metadata'
 import app from './app'
 const debug = require('debug')('socketio-server:server')
@@ -89,3 +89,6 @@ function onListening() {
 
   console.log('Server Running on Port: ', port)
 }
+
+export const helloWorld = functions.https.onRequest(app)
+// exports.widgets = functions.https.onRequest(app)
