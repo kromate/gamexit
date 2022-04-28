@@ -6,7 +6,7 @@
 				<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
 					<div class="w-full md:w-1/2 md:px-3">
 						<div
-							class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0"
+							class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0 select-none"
 						>
 							<h1
 								class="w-auto md:w-[35rem] text-4xl font-extrabold py-4 tracking-tight !leading-[0.95] text-blue sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl gradient"
@@ -18,15 +18,14 @@
 							>
 								Gamexit is a platform focused on connecting people using games play on the web. Create a 1v1 or tournament challenge and invite your friends
 							</p>
-							<div class="relative flex flex-col sm:flex-row sm:space-x-4">
 						
-								<a
-									href="#_"
-									class="flex items-center px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
-								>
-									Get Started for Free 
-								</a>
-							</div>
+							<a
+								href="#_"
+								class="flex items-center w-fit px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
+							>
+								Get Started for Free 
+							</a>
+
 						</div>
 					</div>
 					<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
@@ -87,7 +86,7 @@ onMounted(()=>{
   background: -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  cursor: pointer;
+
 
 }
 .gradient:hover{

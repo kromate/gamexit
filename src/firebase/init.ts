@@ -1,13 +1,13 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "codedenx.firebaseapp.com",
-  projectId: "codedenx",
-  storageBucket: "codedenx.appspot.com",
-  messagingSenderId: "1007702659011",
-  appId: "1:1007702659011:web:f31e410c1faad8edbdf776",
-  measurementId: "G-5DEX9YX706",
-};
+  authDomain: 'gamexit.firebaseapp.com',
+  databaseURL: 'https://gamexit-default-rtdb.firebaseio.com',
+  projectId: 'gamexit',
+  storageBucket: 'gamexit.appspot.com',
+  messagingSenderId: '201425929561',
+  appId: '1:201425929561:web:129cd895c9384c87ba3848'
+}
 
-export const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig)
