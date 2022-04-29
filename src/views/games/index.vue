@@ -13,13 +13,13 @@
 				tag="div"
 			>
 				<div
-					v-for="(n, index) in 10"
+					v-for="(n, index) in games"
 					:key="n"
 					:data-index="index"
 					class="overflow-hidden flex flex-col justify-center items-center hover:scale-[1.01]
 					 rounded-md shadow-md  bg-white w-[22rem]  max-w-[100%] border-4 border-blue"
 				>
-					<img src="../../../games/TicTacToe/image.png" class="w-60">
+					<img :src="n.img" class="w-60">
 
 					<p class="text-center font-medium text-2xl">TicTacToe</p>
 					
@@ -38,10 +38,12 @@
 import { gsap } from 'gsap'
 import NavBar from '@/components/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
+import {GameList} from '@/composables/useGames'
 
+// const games =  
 
-const games = readGames()
-console.log(games)
+console.log(GameList()) 
+
 const beforeEnter = (el) => {
 	el.style.opacity = 0
 	el.style.transform = 'translateY(100px)'

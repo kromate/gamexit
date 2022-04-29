@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
