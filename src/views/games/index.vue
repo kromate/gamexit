@@ -12,25 +12,21 @@
 				@enter="enter"
 				tag="div"
 			>
-				<article
+				<div
 					v-for="(n, index) in 10"
 					:key="n"
 					:data-index="index"
-					class="overflow-hidden rounded-md shadow-xl p-4 border  text w-[22rem] max-w-[100%]"
+					class="overflow-hidden flex flex-col justify-center items-center hover:scale-[1.01]
+					 rounded-md shadow-md  bg-white w-[22rem]  max-w-[100%] border-4 border-blue"
 				>
-					<img src="../../../games/TicTacToe/image.png" alt="">
+					<img src="../../../games/TicTacToe/image.png" class="w-60">
 
+					<p class="text-center font-medium text-2xl">TicTacToe</p>
+					
+					<button	class="btn w-9/12 mb-7 m-5"	>Play</button>
+					
 
-					<div class="flex gap-4 mt-4">
-					
-						<button
-							class="btn"
-							@click="shareTimeline()"
-						>Share
-						</button>
-					
-					</div>
-				</article>
+				</div>
 			</transition-group>
 
 		</section>
