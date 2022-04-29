@@ -5,7 +5,7 @@
     "dev": "nodemon",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
-    "start": "nodemon",
+    "start": "ts-node ./src/server",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
