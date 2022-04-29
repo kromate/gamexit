@@ -39,6 +39,9 @@ import { gsap } from 'gsap'
 import NavBar from '@/components/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 
+
+const games = readGames()
+console.log(games)
 const beforeEnter = (el) => {
 	el.style.opacity = 0
 	el.style.transform = 'translateY(100px)'
