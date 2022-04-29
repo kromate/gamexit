@@ -10,8 +10,8 @@
 
 			<div
 				@click="showMenu = !showMenu"
-				class="flex flex-col items-center justify-center p-3 bg-white border-2 text-blue
-				 border-blue rounded-full cursor-pointer mobile text-lg"
+				class="flex flex-col items-center justify-center p-3 bg-white border-2 text-primary
+				 border-primary rounded-full cursor-pointer mobile text-lg"
 			>
 				<i class="las la-bars " 	v-if="!showMenu"></i>
 				<i class="las la-times" v-else></i>
