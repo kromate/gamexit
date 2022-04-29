@@ -36,7 +36,7 @@
 			</transition>
 
 			<div class=" gap-4 pc">
-				<router-link to="/games" class="btn pc"
+				<router-link to="/games" class="btn pc" v-if="user"
 				>Games</router-link
 				>
 				<button
