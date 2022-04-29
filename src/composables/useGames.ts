@@ -4,7 +4,8 @@ export const GameList = async () => {
         {
             img: (await import('../assets/games/tictactoe.png')).default,
             name: 'TicTacToe',
-            ready: true
+            ready: true,
+            link: '/games/tictactoe'
         }
     ]
 } 

@@ -23,7 +23,7 @@
 
 					<p class="text-center font-medium text-2xl">TicTacToe</p>
 					
-					<button	class="btn w-9/12 mb-7 m-5"	>Play</button>
+					<router-link :to="n.link"	class="btn w-9/12 mb-7 m-5"	>Play</router-link>
 					
 
 				</div>
@@ -40,9 +40,14 @@ import NavBar from '@/components/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 import {GameList} from '@/composables/useGames'
 
-// const games =  
+import { ref, onMounted } from 'vue'
 
-console.log(GameList()) 
+const games = ref()
+onMounted(async () => {
+	games.value = await GameList()
+})
+
+
 
 const beforeEnter = (el) => {
 	el.style.opacity = 0
