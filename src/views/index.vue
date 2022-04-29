@@ -1,5 +1,5 @@
 <template>
-	<DefaultLayout class="bg-dark min-h-screen overflow-hidden ">
+	<DefaultLayout >
 		<NavBar  />
 		<section class="px-4 py-28  md:px-8 bg-transparent ">
 			<div class="container items-center  mx-auto">
@@ -61,23 +61,8 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted} from 'vue'
 import NavBar from '@/components/NavBar.vue'
-import DefaultLayout from '../layouts/defaultLayout.vue'
-
-onMounted(()=>{
-	const gradient = document.querySelector<HTMLElement>('.grad')
-	if(gradient){
-		const onMouseMove = (event)=> {
-		gradient!.style.backgroundImage = 'radial-gradient(at ' + event!.clientX + 
-		'px ' + event!.clientY + 'px, rgba(159,0,191,.9) 0, #4D4FA7 100%)'
-		}
-		document.addEventListener('mousemove', onMouseMove)
-	}
-
-})
-
-
+import DefaultLayout from '@/layouts/defaultLayout.vue'
 </script>
 
 <style >

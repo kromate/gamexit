@@ -3,11 +3,10 @@
 		<div
 			class="container flex flex-wrap items-center justify-between py-5 px-4 mx-auto md:flex-row max-w-7xl"
 		>
-			<a
-				href="#_"
+			<router-link
+				to="/"
 				class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none"
-			>GAMEXIT.</a
-			>
+			>GAMEXIT.</router-link>
 
 			<div
 				@click="showMenu = !showMenu"

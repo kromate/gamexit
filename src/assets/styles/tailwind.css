@@ -10,15 +10,15 @@
 
 
 ::-webkit-scrollbar {
-  width: 8px; /* Remove scrollbar space */
+  width: 5px; /* Remove scrollbar space */
   height: 6px; /* Remove scrollbar space */
   background: #7483bf4e; /* Optional: just make scrollbar invisible */
 }
 
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: #4e46e588;
-  border-radius: 100px;
+  background: #8c72ff80;
+  border-radius: 40px;
   cursor: pointer;
 }
 
