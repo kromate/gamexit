@@ -86,12 +86,11 @@ onMounted(()=>{
   background: -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-
+    animation: hue 1.5s infinite linear;
 }
-.gradient:hover{
-  animation: hue 1s infinite linear;
-}
+/* .gradient:hover{
+
+} */
 .delay{
 
 }
@@ -118,7 +117,7 @@ onMounted(()=>{
     -webkit-filter: hue-rotate(0deg);
   }
   to {
-    -webkit-filter: hue-rotate(-360deg);
+    -webkit-filter: hue-rotate(360deg);
   }
 }
 </style>

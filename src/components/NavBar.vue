@@ -20,12 +20,11 @@
 
 
 			<transition name="slideUp">
-				<div v-if="showMenu" class="w-full gap-4 absolute mt-36 bg-white inset-x-0 p-4">
+				<div v-if="showMenu" class="w-full gap-4 absolute bg-[#ffffff1f] shadow-2xl top-20 inset-x-0 p-4">
 					<router-link
-						to="/pageBlock"
+						to="/games"
 						class="btn rounded-none py-3 w-full"
-						v-if="user"
-					>Pages</router-link
+					>Games</router-link
 					>
 					<button
 						class="btn rounded-none py-3 w-full mt-2"
@@ -37,8 +36,8 @@
 			</transition>
 
 			<div class=" gap-4 pc">
-				<router-link to="/pageBlock" class="btn pc" v-if="user"
-				>Pages</router-link
+				<router-link to="/games" class="btn pc"
+				>Games</router-link
 				>
 				<button
 					class="btn-secondary pc"
@@ -47,6 +46,7 @@
 					{{ user ? "Log Out" : "Sign in" }}
 				</button>
 				<button
+					v-if="!user"
 					class="btn pc"
 					@click="user ? signOutUser() : googleAuth()"
 				>
