@@ -41,4 +41,7 @@
   .card {
     @apply rounded-md shadow-xl bg-white;
   }
+  .badge{
+  @apply  text-xs px-3  rounded-full py-[0.2rem] flex justify-center items-center
+  }
 }

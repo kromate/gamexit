@@ -8,7 +8,6 @@ class RoomHandler {
     }
 
     async joinGame(message) {
-        console.log(message)
         const connectedSockets = this.io.sockets.adapter.rooms.get(message.roomId)
         const socketRooms = Array.from(this.socket.rooms.values()).filter(
             (r) => r !== this.socket.id

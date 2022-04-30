@@ -2,9 +2,12 @@
 	<page-loading/>
 	<DefaultLayout >
 		<InGameNavBar  />
-		<section class="pt-8 text-center text-white">
+		<section class="pt-8 text-center text-white transition-all duration-500">
 			<h1 class="text-5xl font-extrabold">Tic Tac Toe</h1>
-
+			<div class="flex justify-center items-center relative mt-12" v-if="!winner">
+				<p v-if="player" class="badge bg-primary ">it's {{disableAll? 'Your Opponent':'Your'}} turn to play</p>
+			</div>
+			
 			<p class="text-xl text-center mt-9" v-if="!hasGameStarted">Waiting for Another player to join</p>
 			<div class="flex items-center justify-center flex-col m-12">
 				<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
@@ -13,9 +16,12 @@
 				</div>
 			</div>
 
-			<h2 v-if="winner" class="text-3xl font-bold mb-8">{{result}}</h2>
-
-			<button @click="ResetGame" class="btn mx-auto w-[22rem] max-w-[100%]" v-if="winner">Reset</button>
+			<h2 v-if="winner" class="text-3xl font-bold mb-8" >{{result}}</h2>
+			<div class="flex flex-col justify-center items-center w-[22rem] mx-auto  max-w-[100%]" v-if="winner">
+				<p>To play again both players need to reload the browser, reload button comming soon.</p>
+				<button @click="ResetGame" disabled class="btn w-[22rem] max-w-[100%] bg-gray-500 mt-4" >Reset</button>
+			</div>
+			
 
 		</section>
 	</DefaultLayout>
@@ -74,11 +80,11 @@ const updateGameMatrix = (pos) => {
 		gameService.updateGame(socketService.socket, pos)
 		if (winner.value == player.value ) {
 			gameService.gameWin(socketService.socket, 'You Lost!')
-			alert('You Won!')
+			// alert('You Won!')
 		
 		} else if (winner.value) {
 			gameService.gameWin(socketService.socket, 'The Game is a TIE!')
-			alert('The Game is a TIE!')
+			// alert('The Game is a TIE!')
 		}
 	}
 }
@@ -87,7 +93,7 @@ const handleGameWin = () => {
 	if (socketService.socket)
 		gameService.onGameWin(socketService.socket, (message) => {
 			console.log('Here', message)
-			alert(message)
+			// alert(message)
 		})
 }
 

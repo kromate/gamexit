@@ -35,21 +35,14 @@ io.on('connection', (socket) => {
   socket.on('update_game', (message) => {
     handlerGames.updateGame(message)
   })
-  
-  socket.on('update_game', (message) => {
-    handlerGames.updateGame(message)
+
+  socket.on('game_win', (message) => {
+    handlerGames.gameWin(message)
   })
 
 
 
-  //   socket.on('play', (index) => {
-  //     console.log('server received', index)
-  //     socket.broadcast.emit('play', index)
-  //   })
-  //   socket.on('reset', () => {
-  //     console.log('board reset')
-  //     socket.broadcast.emit('reset',)
-  //   })
+
 
 })
 
