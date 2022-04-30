@@ -5,9 +5,9 @@
 			<h1 class="text-3xl md:text-5xl font-bold text-white text-center">Tic Tac Toe</h1>
 
 			<div class="flex flex-col max-w-full w-[18rem] mt-12">
-				<button class="btn w-full">
+				<router-link :to='`/games/tictactoe/${uuidv4()}`' class="btn w-full">
 					Start Game
-				</button>
+				</router-link>
 				<button class="btn w-full mt-5">
 					Join Game
 				</button>
@@ -23,6 +23,7 @@
 import { gsap } from 'gsap'
 import NavBar from '@/components/navigation/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
+import { v4 as uuidv4 } from 'uuid'
 
 const beforeEnter = (el) => {
 	el.style.opacity = 0

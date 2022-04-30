@@ -18,39 +18,16 @@
 			</div>
 
 
-			<transition name="slideUp">
-				<div v-if="showMenu" class="w-full gap-4 absolute bg-[#ffffff1f] shadow-2xl top-20 inset-x-0 p-4">
-					<router-link
-						to="/games"
-						class="btn rounded-none py-3 w-full"
-					>Games</router-link
-					>
-					<button
-						class="btn rounded-none py-3 w-full mt-2"
-						@click="user ? signOutUser() : googleAuth()"
-					>
-						{{ user ? "Log Out" : "Sign in" }}
-					</button>
-				</div>
-			</transition>
 
-			<div class=" gap-4 pc">
-				<router-link to="/games" class="btn pc" v-if="user"
-				>Games</router-link
-				>
+			<div class=" gap-4 ">
+			
 				<button
-					class="btn-secondary pc"
-					@click="user ? signOutUser() : googleAuth()"
+					class="btn-secondary"
+					@click="share()"
 				>
-					{{ user ? "Log Out" : "Sign in" }}
+					share
 				</button>
-				<button
-					v-if="!user"
-					class="btn pc"
-					@click="user ? signOutUser() : googleAuth()"
-				>
-					{{ user ? "Log Out" : "Create Account" }}
-				</button>
+			
 			</div>
 
 		
@@ -68,15 +45,4 @@ const { user } = useUser()
 const showMenu = ref(false)
 </script>
 
-<style scoped>
-.slideUp-enter-from,
-.slideUp-leave-to {
-  opacity: 0;
-  transform: translateY(-100px);
-}
 
-.slideUp-enter-active,
-.slideUp-leave-active {
-  transition: all 0.35s ease;
-}
-</style>
