@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { gsap } from 'gsap'
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/navigation/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 import {GameList} from '@/composables/useGames'
 

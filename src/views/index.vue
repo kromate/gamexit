@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/navigation/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 </script>
 

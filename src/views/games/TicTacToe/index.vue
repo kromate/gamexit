@@ -15,20 +15,14 @@
 					How to play
 				</button>
 			</div>
-		
-
 		</section>
 	</DefaultLayout>
-
 </template>
 
 <script lang="ts" setup>
 import { gsap } from 'gsap'
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/navigation/NavBar.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
-
-
-
 
 const beforeEnter = (el) => {
 	el.style.opacity = 0

@@ -1,24 +1,30 @@
 <template>
-	<div class="pt-8 text-center">
-		<h1 class="text-2xl">Tic Tac Toe</h1>
+	<DefaultLayout >
+		<InGameNavBar  />
+		<section class="pt-8 text-center text-white">
+			<h1 class="text-5xl font-extrabold">Tic Tac Toe</h1>
 
 
-		<div class="flex items-center justify-center flex-col m-12">
-			<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
-				<input class="box btn p-0 m-0" type="text" readonly v-for="(cell, y) in row"  :key="y" 
-					@click="MakeMove($event, x, y)"  :disabled="disableAll" :value="cell">
+			<div class="flex items-center justify-center flex-col m-12">
+				<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
+					<input class="box btn p-0 m-0 " type="text" readonly v-for="(cell, y) in row"  :key="y" 
+						@click="MakeMove($event, x, y)"  :disabled="disableAll" :value="cell">
+				</div>
 			</div>
-		</div>
 
-		<h2 v-if="winner" class="text-3xl font-bold mb-8">Player '{{ winner }}' wins!</h2>
+			<h2 v-if="winner" class="text-3xl font-bold mb-8">Player '{{ winner }}' wins!</h2>
 
-		<button @click="ResetGame" class="btn mx-auto w-[22rem] max-w-[100%]" v-if="!winner">Reset</button>
+			<button @click="ResetGame" class="btn mx-auto w-[22rem] max-w-[100%]" v-if="winner">Reset</button>
 
-	</div>
+		</section>
+	</DefaultLayout>
 </template>
 
 
 <script setup lang="ts">
+import InGameNavBar from '@/components/navigation/InGameNavBar.vue'
+import DefaultLayout from '@/layouts/defaultLayout.vue'
+
 import { ref, computed } from 'vue'
 const player = ref('X')
 const disableAll = ref(false)
@@ -38,6 +44,8 @@ const CalculateWinner = (board) => {
 			return board[a]
 		}
 	}
+
+	console.log(board)
 	return null
 }
 const winner = computed(() => CalculateWinner(board.value.flat()))
@@ -62,7 +70,6 @@ const ResetGame = () => {
 </script>
 
 
-
 <style scoped>
 .box {
     border: 1px solid black;
@@ -73,7 +80,6 @@ const ResetGame = () => {
     text-align: center;
     font-size: 50px;
     font-weight: 500;
-    color: black;
 }
 
 .box:hover {
