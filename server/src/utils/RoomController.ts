@@ -1,4 +1,4 @@
-class RoomController {
+class RoomHandler {
     io: any
     socket: any
 
@@ -40,4 +40,4 @@ class RoomController {
 
 
 
-module.exports = RoomController
+module.exports = RoomHandler

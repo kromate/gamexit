@@ -65,12 +65,34 @@ const handleGameStart = () => {
 const handleGameUpdate = () => {
 	if (socketService.socket)
 		gameService.onGameUpdate(socketService.socket, (pos) => {
-			MakeMove(pos[0], pos[1])
+			updateBoard(pos[0], pos[1], pos[2])
 			// setMatrix(newMatrix)
 			// checkGameState(newMatrix)
 			// setPlayerTurn(true)
 		})
 }
+const updateGameMatrix = (pos) => {
+	if (socketService.socket) {
+		gameService.updateGame(socketService.socket, pos)
+
+		if (winner.value == player.value ) {
+			gameService.gameWin(socketService.socket, 'You Lost!')
+			alert('You Won!')
+		
+		} else if (winner.value) {
+			gameService.gameWin(socketService.socket, 'The Game is a TIE!')
+			alert('The Game is a TIE!')
+		}
+
+
+	}
+}
+
+
+
+
+
+
 
 const connectSocket = async () => {
 	const socket = await socketService
@@ -133,13 +155,20 @@ const MakeMove = (x, y) => {
 	if (winner.value) return
 	if (board.value[x][y]) return
 	board.value[x][y] = player.value
-	// socket.emit('play', [x,y])
+	updateGameMatrix([x,y, player.value])
 	disableAll.value = true
 	// el.target.disabled = true
 	// player.value = player.value === 'X' ? 'O' : 'X'
 }
+
+const updateBoard = (x,y, player)=>{
+	if (winner.value) return
+	if (board.value[x][y]) return
+	board.value[x][y] = player
+	disableAll.value = false	
+}
 const ResetGame = () => {
-	socket.emit('reset')
+	// socket.emit('reset')
 	board.value = [
 		['', '', ''],
 		['', '', ''],
