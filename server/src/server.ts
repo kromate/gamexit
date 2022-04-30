@@ -5,6 +5,8 @@ const express = require('express')
 const path = require('path')
 const socketio = require('socket.io')
 
+const socketHandler = require('./utils/MainController')
+
 
 const app = express()
 const server = http.createServer(app)
@@ -18,7 +20,10 @@ const io = socketio(server, {
 
 
 io.on('connection', (socket) => {
-  socket.emit('connected')
+  const handler = new socketHandler(io, socket)
+
+  handler.connected()
+
   socket.on('play', (index) => {
     console.log('server received', index)
     socket.broadcast.emit('play', index)

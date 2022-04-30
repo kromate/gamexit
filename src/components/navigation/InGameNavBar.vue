@@ -8,7 +8,7 @@
 			</router-link>
 
 			<div class=" gap-4 ">
-				<button	class="btn-secondary" @click="share()">
+				<button	class="btn-secondary" @click="shareGame()">
 					share
 				</button>
 			
@@ -20,11 +20,40 @@
 </template>
 
 <script setup lang="ts">
+import { useAlert } from '@/composables/useNotification'
 import { useShare, useClipboard } from '@vueuse/core'
-
 import { onMounted, ref } from 'vue'
-const source = ref('')
+import { useRoute } from 'vue-router'
 
+// console.log(`${location.href}/`)
+
+const source = ref('')
+const { copy } = useClipboard({ source })
+const { share, isSupported } = useShare()
+
+const copyLink = () => {
+	source.value = location.href
+	copy()
+	useAlert().openAlert(
+		'Seems something went wrong while trying to share, don\'t worry we copied it to your clipboard '
+	)
+}
+	
+const shareGame = () => {
+
+	if (!isSupported) {
+		copyLink()
+	}
+	try {
+		share({
+			title: 'Gamexit',
+			text:'Play A Game on Gamexit',
+			url: location.href,
+		})
+	} catch {
+		copyLink()
+	}
+}
 
 </script>
 

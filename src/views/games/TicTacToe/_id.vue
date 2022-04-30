@@ -76,6 +76,7 @@ const MakeMove = (x, y) => {
 	if (board.value[x][y]) return
 	board.value[x][y] = player.value
 	socket.emit('play', [x,y])
+	disableAll.value = true
 	// el.target.disabled = true
 	player.value = player.value === 'X' ? 'O' : 'X'
 }
