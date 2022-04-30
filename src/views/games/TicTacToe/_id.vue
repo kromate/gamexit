@@ -62,7 +62,6 @@ const handleGameStart = () => {
 	if (socketService.socket)
 		gameService.onStartGame(socketService.socket, (options) => {
 			hasGameStarted.value = true
-			console.log(options)
 			disableAll.value = options.start
 			player.value = options.symbol
 		})
@@ -98,10 +97,6 @@ const handleGameWin = () => {
 }
 
 
-
-
-
-
 const connectSocket = async () => {
 	const socket = await socketService
 		.connect('https://gamexit.herokuapp.com/')
@@ -114,19 +109,6 @@ const connectSocket = async () => {
 	handleGameStart()
 	handleGameUpdate()
 	handleGameWin()
-
-	// socket.on('connected', () => {
-	// 	useLoading().closeLoading()
-
-	// 	// socket.emit('join_game')
-	// 	console.log('received index')
-	// })
-	// socket.on('play', (index) => {
-	// 	MakeMove(index[0], index[1])
-	// })
-	// socket.on('reset', (index) => {
-	// 	ResetGame()
-	// })
 }
 
 onMounted(connectSocket)
