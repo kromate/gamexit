@@ -9,7 +9,7 @@
 			<div class="flex items-center justify-center flex-col m-12">
 				<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
 					<input class="box btn p-0 m-0 " type="text" readonly v-for="(cell, y) in row"  :key="y" 
-						@click="MakeMove($event, x, y)"  :disabled="disableAll" :value="cell">
+						@click="MakeMove(x, y)"  :disabled="disableAll" :value="cell">
 				</div>
 			</div>
 
@@ -34,7 +34,12 @@ const socket = io('http://localhost:9000')
 socket.on('connected', () => {
 	useLoading().closeLoading()
 	console.log('received index')
-
+})
+socket.on('play', (index) => {
+	MakeMove(index[0], index[1])
+})
+socket.on('reset', (index) => {
+	ResetGame()
 })
 import { ref, computed } from 'vue'
 const player = ref('X')
@@ -66,15 +71,16 @@ const CalculateWinner = (board) => {
 	return null
 }
 const winner = computed(() => CalculateWinner(board.value.flat()))
-const MakeMove = (el, x, y) => {
+const MakeMove = (x, y) => {
 	if (winner.value) return
 	if (board.value[x][y]) return
 	board.value[x][y] = player.value
 	socket.emit('play', [x,y])
-	el.target.disabled = true
+	// el.target.disabled = true
 	player.value = player.value === 'X' ? 'O' : 'X'
 }
 const ResetGame = () => {
+	socket.emit('reset')
 	board.value = [
 		['', '', ''],
 		['', '', ''],
@@ -102,7 +108,7 @@ const ResetGame = () => {
 
 .box:hover {
     cursor: pointer;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(45, 7, 99);
 }
 
 .box:disabled {

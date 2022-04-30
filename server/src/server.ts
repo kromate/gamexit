@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
     console.log('server received', index)
     socket.broadcast.emit('play', index)
   })
+  socket.on('reset', () => {
+    console.log('board reset')
+    socket.broadcast.emit('reset',)
+  })
 })
 
 

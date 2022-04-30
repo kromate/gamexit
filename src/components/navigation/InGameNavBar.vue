@@ -3,21 +3,12 @@
 		<div
 			class="container flex flex-wrap items-center justify-between py-5 px-4 mx-auto md:flex-row max-w-7xl"
 		>
-			<router-link
-				to="/"
-				class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none"
-			>GAMEXIT.</router-link>
-
-		
-
-
+			<router-link to="/"	class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none">
+				GAMEXIT.
+			</router-link>
 
 			<div class=" gap-4 ">
-			
-				<button
-					class="btn-secondary"
-					@click="share()"
-				>
+				<button	class="btn-secondary" @click="share()">
 					share
 				</button>
 			
@@ -29,10 +20,10 @@
 </template>
 
 <script setup lang="ts">
+import { useShare, useClipboard } from '@vueuse/core'
 
-import { useUser } from '../../composables/useGlobals'
-
-const { user } = useUser()
+import { onMounted, ref } from 'vue'
+const source = ref('')
 
 
 </script>
