@@ -4,7 +4,7 @@ export interface IStartGame {
     start: boolean;
     symbol: 'x' | 'o';
 }
-export type IPlayMatrix = Array<Array<string | null>>;
+export type IPlayMatrix = Array<Array<number | null>>;
 
 class GameService {
     public async joinGameRoom(socket: Socket | null, roomId: string): Promise<boolean> {

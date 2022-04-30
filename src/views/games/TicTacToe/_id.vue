@@ -5,7 +5,7 @@
 		<section class="pt-8 text-center text-white">
 			<h1 class="text-5xl font-extrabold">Tic Tac Toe</h1>
 
-
+			<p class="text-xl text-center mt-9" v-if="!hasGameStarted">Waiting for Another player to join</p>
 			<div class="flex items-center justify-center flex-col m-12">
 				<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
 					<input class="box btn p-0 m-0 " type="text" readonly v-for="(cell, y) in row"  :key="y" 
@@ -35,19 +35,42 @@ import { useRoute } from 'vue-router'
 
 
 useLoading().openLoading('Setting things up')
+const {id} = useRoute().params
 
-console.log(useRoute())
+const hasGameStarted = ref(false)
+const player = ref('')
+const disableAll = ref(true)
+const result = ref('')
 
 const joinRoom = async () => {
 	const socket = socketService.socket
 	const joined = await gameService
-		.joinGameRoom(socket, useRoute().params.id as string)
+		.joinGameRoom(socket, id as string)
 		.catch((err) => {
 			alert(err.error)
 		})
 	if(joined) useLoading().closeLoading()
 }
 
+const handleGameStart = () => {
+	if (socketService.socket)
+		gameService.onStartGame(socketService.socket, (options) => {
+			hasGameStarted.value = true
+			console.log(options)
+			disableAll.value = options.start
+			player.value = options.symbol
+		})
+}
+
+const handleGameUpdate = () => {
+	if (socketService.socket)
+		gameService.onGameUpdate(socketService.socket, (pos) => {
+			MakeMove(pos[0], pos[1])
+			// setMatrix(newMatrix)
+			// checkGameState(newMatrix)
+			// setPlayerTurn(true)
+		})
+}
 
 const connectSocket = async () => {
 	const socket = await socketService
@@ -58,6 +81,8 @@ const connectSocket = async () => {
 
 
 	await joinRoom()
+	handleGameStart()
+	handleGameUpdate()
 
 	// socket.on('connected', () => {
 	// 	useLoading().closeLoading()
@@ -77,9 +102,7 @@ onMounted(connectSocket)
 
 
 
-const player = ref('X')
-const disableAll = ref(false)
-const result = ref('')
+
 
 
 const board = ref([
@@ -110,10 +133,10 @@ const MakeMove = (x, y) => {
 	if (winner.value) return
 	if (board.value[x][y]) return
 	board.value[x][y] = player.value
-	socket.emit('play', [x,y])
+	// socket.emit('play', [x,y])
 	disableAll.value = true
 	// el.target.disabled = true
-	player.value = player.value === 'X' ? 'O' : 'X'
+	// player.value = player.value === 'X' ? 'O' : 'X'
 }
 const ResetGame = () => {
 	socket.emit('reset')
