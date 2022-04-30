@@ -8,14 +8,7 @@
 				class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none"
 			>GAMEXIT.</router-link>
 
-			<div
-				@click="showMenu = !showMenu"
-				class="flex flex-col items-center justify-center p-3 bg-white border-2 text-primary
-				 border-primary rounded-full cursor-pointer mobile text-lg"
-			>
-				<i class="las la-bars " 	v-if="!showMenu"></i>
-				<i class="las la-times" v-else></i>
-			</div>
+		
 
 
 
@@ -36,13 +29,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from '@vue/reactivity'
-import { googleAuth, signOutUser } from '../../firebase/auth'
+
 import { useUser } from '../../composables/useGlobals'
 
 const { user } = useUser()
 
-const showMenu = ref(false)
+
 </script>
 
 

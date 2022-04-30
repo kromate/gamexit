@@ -1,4 +1,5 @@
 <template>
+	<page-loading/>
 	<DefaultLayout >
 		<InGameNavBar  />
 		<section class="pt-8 text-center text-white">
@@ -23,11 +24,18 @@
 
 <script setup lang="ts">
 import InGameNavBar from '@/components/navigation/InGameNavBar.vue'
+import { useLoading } from '@/composables/useNotification'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
+
+useLoading().openLoading('Setting things up')
 
 import io from 'socket.io-client'
 const socket = io('http://localhost:9000')
+socket.on('connected', () => {
+	useLoading().closeLoading()
+	console.log('received index')
 
+})
 import { ref, computed } from 'vue'
 const player = ref('X')
 const disableAll = ref(false)

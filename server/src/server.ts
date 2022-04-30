@@ -18,7 +18,7 @@ const io = socketio(server, {
 
 
 io.on('connection', (socket) => {
-  console.log('connected')
+  socket.emit('connected')
   socket.on('play', (index) => {
     console.log('server received', index)
     socket.broadcast.emit('play', index)
