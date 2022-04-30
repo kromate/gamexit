@@ -1,74 +1,60 @@
 <template>
 	<div class="pt-8 text-center">
-		<div class="header">
-			<h1 class="text-2xl">Tic Tac Toe</h1>
-		</div>
+		<h1 class="text-2xl">Tic Tac Toe</h1>
 
-		<div class="box">
-			<div class="row" v-for="row in 3" :key="row">
-				<input class="btn p-0 m-0" type="text" readonly v-for="(col,i) in 3" :key="col" @click="ticTacToe($event, (row+col))" :disabled="disableAll">
+
+		<div class="flex items-center justify-center flex-col m-12">
+			<div class="flex items-center justify-center" v-for="(row, x) in board"  :key="x">
+				<input class="box btn p-0 m-0" type="text" readonly v-for="(cell, y) in row"  :key="y" 
+					@click="MakeMove($event, x, y)"  :disabled="disableAll" :value="cell">
 			</div>
 		</div>
 
-		<p class="result">{{result}}</p>
+		<h2 v-if="winner" class="text-3xl font-bold mb-8">Player '{{ winner }}' wins!</h2>
 
-		<div class="reset">
-			<button id="reset">Reset</button>
-		</div>
+		<span @click="ResetGame" class="btn" v-if="winner">Reset</span>
+
 	</div>
 </template>
 
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-
-let cells = ['', '', '', '', '', '', '', '', '']
-let currentPlayer = 'X'
-  
-const result = ref('')
+import { ref, computed } from 'vue'
+const player = ref('X')
 const disableAll = ref(false)
 
-const conditions = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6]
-]
-const ticTacToe = (element, index) => {
-	console.log(index)
-	element.target.value = currentPlayer
-	element.target.disabled = true
-	cells[index] = currentPlayer
-	currentPlayer = currentPlayer == 'X' ? 'O' : 'X'
-	result.value = `Player ${currentPlayer} Turn`
 
-	for (let i = 0; i < conditions.length; i++) {
-		const condition = conditions[i]
-		const a = cells[condition[0]]
-		const b = cells[condition[1]]
-		const c = cells[condition[2]]
-
-		if (a == '' || b == '' || c == '') {
-			continue
-		}
-
-		if ((a == b) && (b == c)) {
-			result.value = `Player ${a} Won 🎉`
+const board = ref([
+	['', '', ''],
+	['', '', ''],
+	['', '', '']
+])
+const CalculateWinner = (board) => {
+	const lines = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
+	for (let i = 0; i < lines.length; i++) {
+		const [a, b, c] = lines[i]
+		if (board[a] && board[a] === board[b] && board[a] === board[c]) {
 			disableAll.value = true
+			return board[a]
 		}
 	}
+	return null
 }
-  
-  	function reset() {
-	cells = ['', '', '', '', '', '', '', '', '']
-
-	currentPlayer = 'X'
-	result.value = 'Player X Turn'
-	disableAll.value = false
+const winner = computed(() => CalculateWinner(board.value.flat()))
+const MakeMove = (el, x, y) => {
+	if (winner.value) return
+	if (board.value[x][y]) return
+	board.value[x][y] = player.value
+	el.target.disabled = true
+	player.value = player.value === 'X' ? 'O' : 'X'
+}
+const ResetGame = () => {
+	board.value = [
+		['', '', ''],
+		['', '', ''],
+		['', '', '']
+	]
+	player.value = 'X'
 }
 
 
@@ -77,24 +63,7 @@ const ticTacToe = (element, index) => {
 
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@400;500;600;700&display=swap');
-
-
 .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 35px;
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn {
     border: 1px solid black;
     border-radius: 5px;
     height: 75px;
@@ -103,41 +72,17 @@ const ticTacToe = (element, index) => {
     text-align: center;
     font-size: 50px;
     font-weight: 500;
-    @apply shadow-lg;
+    color: black;
 }
 
-.btn:hover {
+.box:hover {
     cursor: pointer;
     background-color: rgb(240, 240, 240);
 }
 
-.btn:disabled {
+.box:disabled {
     color: black;
     cursor: no-drop;
 }
 
-.result {
-    text-align: center;
-}
-
-.reset {
-    text-align: center;
-}
-
-#reset {
-    border: 1px solid black;
-    cursor: pointer;
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    padding: 5px 20px;
-    font-size: 17px;
-    margin: 35px;
-    transition: all 0.1s ease-in-out;
-}
-
-#reset:hover {
-    color: white;
-    background-color: black;
-}
 </style>
