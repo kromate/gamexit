@@ -33,7 +33,10 @@ io.on('connection', (socket) => {
   })
 
   socket.on('update_game', (message) => {
-    console.log(message)
+    handlerGames.updateGame(message)
+  })
+  
+  socket.on('update_game', (message) => {
     handlerGames.updateGame(message)
   })
 

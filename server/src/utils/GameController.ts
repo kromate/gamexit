@@ -21,7 +21,11 @@ class GameHandler {
     updateGame(message) {
         const gameRoom = this.getSocketGameRoom(this.socket)
         this.socket.to(gameRoom).emit('on_game_update', message)
+    }
 
+    gameWin(message) {
+        const gameRoom = this.getSocketGameRoom(this.socket)
+        this.socket.to(gameRoom).emit('on_game_win', message)
     }
 
 }

@@ -66,15 +66,12 @@ const handleGameUpdate = () => {
 	if (socketService.socket)
 		gameService.onGameUpdate(socketService.socket, (pos) => {
 			updateBoard(pos[0], pos[1], pos[2])
-			// setMatrix(newMatrix)
-			// checkGameState(newMatrix)
-			// setPlayerTurn(true)
+		
 		})
 }
 const updateGameMatrix = (pos) => {
 	if (socketService.socket) {
 		gameService.updateGame(socketService.socket, pos)
-
 		if (winner.value == player.value ) {
 			gameService.gameWin(socketService.socket, 'You Lost!')
 			alert('You Won!')
@@ -83,11 +80,16 @@ const updateGameMatrix = (pos) => {
 			gameService.gameWin(socketService.socket, 'The Game is a TIE!')
 			alert('The Game is a TIE!')
 		}
-
-
 	}
 }
 
+const handleGameWin = () => {
+	if (socketService.socket)
+		gameService.onGameWin(socketService.socket, (message) => {
+			console.log('Here', message)
+			alert(message)
+		})
+}
 
 
 
@@ -105,6 +107,7 @@ const connectSocket = async () => {
 	await joinRoom()
 	handleGameStart()
 	handleGameUpdate()
+	handleGameWin()
 
 	// socket.on('connected', () => {
 	// 	useLoading().closeLoading()
@@ -151,6 +154,7 @@ const CalculateWinner = (board) => {
 	return null
 }
 const winner = computed(() => CalculateWinner(board.value.flat()))
+
 const MakeMove = (x, y) => {
 	if (winner.value) return
 	if (board.value[x][y]) return
