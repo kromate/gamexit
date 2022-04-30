@@ -7,9 +7,32 @@ class RoomController {
         this.socket = socket
     }
 
-    connected() {
-        this.socket.emit('connected')
-        console.log('New Socket connected: ', this.socket.id)
+    async joinGame(message) {
+        console.log(message)
+        const connectedSockets = this.io.sockets.adapter.rooms.get(message.roomId)
+        const socketRooms = Array.from(this.socket.rooms.values()).filter(
+            (r) => r !== this.socket.id
+        )
+
+        if (
+            socketRooms.length > 0 ||
+            (connectedSockets && connectedSockets.size === 2)
+        ) {
+            this.socket.emit('room_join_error', {
+                status: 500,
+                error: 'Room is full please choose another room to play!',
+            })
+        } else {
+            await this.socket.join(message.roomId)
+            this.socket.emit('room_joined')
+
+            if (this.io.sockets.adapter.rooms.get(message.roomId).size === 2) {
+                this.socket.emit('start_game', { start: true, symbol: 'x' })
+                this.socket
+                    .to(message.roomId)
+                    .emit('start_game', { start: false, symbol: 'o' })
+            }
+        }
     }
 
 }

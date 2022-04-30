@@ -9,7 +9,7 @@ class SocketHandler {
 
     connected() {
         this.socket.emit('connected')
-        console.log('New Socket connected: ', this.socket.id)
+        // console.log('New Socket connected: ', this.socket.id)
     }
 
 }

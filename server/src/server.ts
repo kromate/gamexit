@@ -6,6 +6,7 @@ const path = require('path')
 const socketio = require('socket.io')
 
 const socketHandler = require('./utils/MainController')
+const roomHandler = require('./utils/RoomController')
 
 
 const app = express()
@@ -20,9 +21,14 @@ const io = socketio(server, {
 
 
 io.on('connection', (socket) => {
-  const handler = new socketHandler(io, socket)
+  const handlerSocket = new socketHandler(io, socket)
+  const handlerRooms = new roomHandler(io, socket)
 
-  handler.connected()
+  handlerSocket.connected()
+
+  socket.on('join_game', (message) => {
+    handlerRooms.joinGame(message)
+  })
 
   socket.on('play', (index) => {
     console.log('server received', index)

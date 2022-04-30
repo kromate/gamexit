@@ -24,24 +24,59 @@
 
 <script setup lang="ts">
 import InGameNavBar from '@/components/navigation/InGameNavBar.vue'
-import { useLoading } from '@/composables/useNotification'
+import pageLoading from '@/components/core/PageLoading.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
+import { useLoading } from '@/composables/useNotification'
+import io from 'socket.io-client'
+import socketService from '@/composables/games/useSocketService'
+import gameService from '@/composables/games/tictactoe/useGameService'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
 
 useLoading().openLoading('Setting things up')
 
-import io from 'socket.io-client'
-const socket = io('http://localhost:9000')
-socket.on('connected', () => {
-	useLoading().closeLoading()
-	console.log('received index')
-})
-socket.on('play', (index) => {
-	MakeMove(index[0], index[1])
-})
-socket.on('reset', (index) => {
-	ResetGame()
-})
-import { ref, computed } from 'vue'
+console.log(useRoute())
+
+const joinRoom = async () => {
+	const socket = socketService.socket
+	const joined = await gameService
+		.joinGameRoom(socket, useRoute().params.id as string)
+		.catch((err) => {
+			alert(err.error)
+		})
+	if(joined) useLoading().closeLoading()
+}
+
+
+const connectSocket = async () => {
+	const socket = await socketService
+		.connect('http://localhost:9000')
+		.catch((err) => {
+			console.log('Error: ', err)
+		})
+
+
+	await joinRoom()
+
+	// socket.on('connected', () => {
+	// 	useLoading().closeLoading()
+
+	// 	// socket.emit('join_game')
+	// 	console.log('received index')
+	// })
+	// socket.on('play', (index) => {
+	// 	MakeMove(index[0], index[1])
+	// })
+	// socket.on('reset', (index) => {
+	// 	ResetGame()
+	// })
+}
+
+onMounted(connectSocket)
+
+
+
 const player = ref('X')
 const disableAll = ref(false)
 const result = ref('')
