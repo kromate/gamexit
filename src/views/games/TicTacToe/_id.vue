@@ -104,7 +104,7 @@ const handleGameWin = () => {
 
 const connectSocket = async () => {
 	const socket = await socketService
-		.connect('http://localhost:9000')
+		.connect('https://gamexit.herokuapp.com/')
 		.catch((err) => {
 			console.log('Error: ', err)
 		})
