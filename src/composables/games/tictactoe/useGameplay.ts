@@ -42,6 +42,7 @@ const handleGameStart = () => {
     if (socketService.socket)
         gameService.onStartGame(socketService.socket, (options) => {
             console.log('test')
+            ResetGame()
             globalGameState.hasGameStarted.value = true
             globalGameState.disableAll.value = options.start
             globalGameState.player.value = options.symbol
@@ -68,6 +69,8 @@ const updateGameMatrix = (pos) => {
 const handleGameWin = () => {
     if (socketService.socket)
         gameService.onGameWin(socketService.socket, (message) => {
+            console.log(message)
+            console.log(typeof message)
             if (message === '0') playSound(tLose)
             else if (message === '1') playSound(tDraw)
 
