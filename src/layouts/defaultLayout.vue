@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-dark min-h-screen overflow-hidden bg">
+	<div class="bg-dark min-h-screen overflow-hidden ">
 		<PageLoading />
 		<Alert />
 		<slot />
@@ -25,8 +25,4 @@ onMounted(()=>{
 })
 </script>
 
-<style scoped>
-.bg{
-
-}
-</style>
+<style scoped></style>
