@@ -120,8 +120,7 @@ export const MakeMove = (x, y) => {
     board.value[x][y] = globalGameState.player.value
     updateGameMatrix([x, y, globalGameState.player.value])
     globalGameState.disableAll.value = true
-    // el.target.disabled = true
-    // player.value = player.value === 'X' ? 'O' : 'X'
+
 }
 
 const updateBoard = (x, y, player) => {
