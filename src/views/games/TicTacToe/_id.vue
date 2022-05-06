@@ -17,8 +17,8 @@
 
 			<h2 v-if="winner" class="text-3xl font-bold mb-8" >{{globalGameState.result}}</h2>
 			<div class="flex flex-col justify-center items-center w-[22rem] mx-auto  max-w-[100%]" v-if="winner">
-				<p>To play again both players need to reload the browser, reload button comming soon.</p>
-				<button @click="ResetGame" disabled class="btn w-[22rem] max-w-[100%] bg-gray-500 mt-4" >Reset</button>
+				<!-- <p>To play again both players need to reload the browser, reload button comming soon.</p> -->
+				<button @click="ResetGame" class="btn w-[22rem] max-w-[100%] bg-gray-500 mt-4" >Reset</button>
 			</div>
 			
 
@@ -33,11 +33,6 @@ import pageLoading from '@/components/core/PageLoading.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 import { onMounted } from 'vue'
 import {globalGameState, board, winner, connectSocket, MakeMove, ResetGame} from '@/composables/games/tictactoe/useGameplay'
-
-
-
-
-
 
 onMounted(connectSocket)
 

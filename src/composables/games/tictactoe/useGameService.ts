@@ -21,24 +21,32 @@ class GameService {
 
     public async onGameUpdate(
         socket: Socket,
-        listiner: (matrix: IPlayMatrix) => void
+        listener: (matrix: IPlayMatrix) => void
     ) {
-        socket.on('on_game_update', ({ matrix }) => listiner(matrix))
+        socket.on('on_game_update', ({ matrix }) => listener(matrix))
     }
 
     public async onStartGame(
         socket: Socket,
-        listiner: (options: IStartGame) => void
+        listener: (options: IStartGame) => void
     ) {
-        socket.on('start_game', listiner)
+        socket.on('start_game', listener)
     }
 
     public async gameWin(socket: Socket, message: string) {
         socket.emit('game_win', { message })
     }
 
-    public async onGameWin(socket: Socket, listiner: (message: string) => void) {
-        socket.on('on_game_win', ({ message }) => listiner(message))
+    public async onGameWin(socket: Socket, listener: (message: string) => void) {
+        socket.on('on_game_win', ({ message }) => listener(message))
+    }
+
+    public async gameRest(socket: Socket, message: string) {
+        socket.emit('game_reset', { message })
+    }
+
+    public async onGameRest(socket: Socket, listener: (message: string) => void) {
+        socket.on('on_game_reset', ({ message }) => listener(message))
     }
 }
 

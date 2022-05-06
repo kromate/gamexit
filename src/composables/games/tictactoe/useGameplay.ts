@@ -76,6 +76,10 @@ const handleGameWin = () => {
 
         })
 }
+const resetGame = () => {
+    if (socketService.socket)
+        gameService.gameRest(socketService.socket, )
+}
 export const connectSocket = async () => {
     useLoading().openLoading('Setting things up')
     const { id } = useRoute().params
@@ -132,13 +136,12 @@ const updateBoard = (x, y, player) => {
 }
 
 export const ResetGame = () => {
-    // socket.emit('reset')
+    socket.emit('reset')
     board.value = [
         ['', '', ''],
         ['', '', ''],
         ['', '', '']
     ]
-    globalGameState.disableAll.value = false
-    globalGameState.player.value = 'X'
+    globalGameState.disableAll.value = true
 }
 
