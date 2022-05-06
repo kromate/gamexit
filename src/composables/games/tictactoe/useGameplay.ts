@@ -41,7 +41,6 @@ const joinRoom = async (id) => {
 const handleGameStart = () => {
     if (socketService.socket)
         gameService.onStartGame(socketService.socket, (options) => {
-            console.log('test')
             ResetGame()
             globalGameState.hasGameStarted.value = true
             globalGameState.disableAll.value = options.start
@@ -73,13 +72,18 @@ const handleGameWin = () => {
             console.log(typeof message)
             if (message === '0') playSound(tLose)
             else if (message === '1') playSound(tDraw)
-
         })
 }
-const resetGame = () => {
-    if (socketService.socket)
-        gameService.gameRest(socketService.socket, )
+
+export const playRematch = () => {
+    if (socketService.socket) {
+        gameService.gameRematch(socketService.socket, 'requesting a Match')
+        ResetGame()
+        globalGameState.hasGameStarted.value = false
+
+    }
 }
+
 export const connectSocket = async () => {
     useLoading().openLoading('Setting things up')
     const { id } = useRoute().params
@@ -136,7 +140,6 @@ const updateBoard = (x, y, player) => {
 }
 
 export const ResetGame = () => {
-    socket.emit('reset')
     board.value = [
         ['', '', ''],
         ['', '', ''],

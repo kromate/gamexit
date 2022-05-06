@@ -41,12 +41,12 @@ class GameService {
         socket.on('on_game_win', ({ message }) => listener(message))
     }
 
-    public async gameRest(socket: Socket, message: string) {
-        socket.emit('game_reset', { message })
+    public async gameRematch(socket: Socket, message: string) {
+        socket.emit('game_rematch', { message })
     }
 
-    public async onGameRest(socket: Socket, listener: (message: string) => void) {
-        socket.on('on_game_reset', ({ message }) => listener(message))
+    public async onGameRematch(socket: Socket, listener: (message: string) => void) {
+        socket.on('on_game_rematch', ({ message }) => listener(message))
     }
 }
 
