@@ -42,6 +42,7 @@ const handleGameStart = () => {
     if (socketService.socket)
         gameService.onStartGame(socketService.socket, (options) => {
             ResetGame()
+
             globalGameState.hasGameStarted.value = true
             globalGameState.disableAll.value = options.start
             globalGameState.player.value = options.symbol
