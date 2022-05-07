@@ -44,24 +44,14 @@ import {globalGameState, board, winner, connectSocket, MakeMove, playRematch} fr
 import { enableReload, disableReload } from '@/composables/useUtils'
 
 onMounted(()=>{
-	// disableReload()
+	disableReload()
 	connectSocket()
 })
-// onUnmounted(enableReload)
+onUnmounted(enableReload)
 
 
 
-const bc = new BroadcastChannel('test_channel')
 
-bc.onmessage = function (ev) { 
-	console.log('working')
-	console.log(ev)
-	if(ev.data && ev.data===window.location.href){
-		alert('You cannot open the same page in 2 tabs')
-	}
-}
-
-bc.postMessage(window.location.href)
 
 
 
