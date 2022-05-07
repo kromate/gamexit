@@ -22,9 +22,12 @@
 			</div>
 			
 
-			<div class="absolute badge bg-primary top-0 right-4 flex flex-col !px-1 py-3 text-base">
+			<div class="absolute badge bg-primary top-0 right-4 flex flex-col gap-4 !px-1 py-3 text-[28px] opacity-50 hover:opacity-100">
 				<i class="las la-volume-up"></i>
-				<i class="las la-volume-mute"></i>
+				<!-- <i class="las la-volume-mute"></i> -->
+				<i class="las la-microphone"></i>
+				<!-- <i class="las la-microphone-slash"></i> -->
+				<i class="las la-cog"></i>
 			</div>
 
 		</section>

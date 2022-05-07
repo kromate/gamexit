@@ -1,13 +1,8 @@
 module.exports = {
-	purge: {
-		enabled: process.env.HUGO_ENVIRONMENT === 'production',
-	},
 	content: [
 		'./index.html',
-		'./src/**/*.{vue,js,ts,jsx,tsx}',
-		'./blocks/**/*.{vue,js,ts,jsx,tsx}',
+		'./src/**/**/*.{vue,js,ts,jsx,tsx}',
 	],
-	mode: 'jit',
 	theme: {
 		extend: {
 			colors: {
