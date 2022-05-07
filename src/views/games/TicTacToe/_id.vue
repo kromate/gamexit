@@ -1,7 +1,7 @@
 <template>
 	<DefaultLayout >
 		<InGameNavBar  />
-		<section class="pt-8 text-center text-white transition-all duration-500">
+		<section class="pt-8 text-center text-white transition-all duration-500 relative">
 			<h1 class="text-5xl font-extrabold">Tic Tac Toe</h1>
 			<div class="flex justify-center items-center relative mt-12" v-if="!winner">
 				<p v-if="globalGameState.player.value" class="badge bg-primary ">it's {{globalGameState.disableAll.value? 'Your Opponent':'Your'}} turn to play</p>
@@ -22,6 +22,11 @@
 			</div>
 			
 
+			<div class="absolute badge bg-primary top-0 right-4 flex flex-col !px-1 py-3 text-base">
+				<i class="las la-volume-up"></i>
+				<i class="las la-volume-mute"></i>
+			</div>
+
 		</section>
 	</DefaultLayout>
 </template>
@@ -36,10 +41,10 @@ import {globalGameState, board, winner, connectSocket, MakeMove, playRematch} fr
 import { enableReload, disableReload } from '@/composables/useUtils'
 
 onMounted(()=>{
-	disableReload()
+	// disableReload()
 	connectSocket()
 })
-onUnmounted(enableReload)
+// onUnmounted(enableReload)
 
 
 
