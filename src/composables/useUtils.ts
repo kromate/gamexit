@@ -4,7 +4,6 @@ export const playSound = (url) => {
 }
 
 export const disableReload = () => {
-    window.onbeforeunload = () => {
-        return 'Dude, are you sure you want to leave? Think of the kittens!'
-    }
+    addEventListener('beforeunload', (e) => e.preventDefault(), { capture: true })
 }
+export const 
