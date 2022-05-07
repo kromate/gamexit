@@ -31,13 +31,29 @@
 import InGameNavBar from '@/components/navigation/InGameNavBar.vue'
 import pageLoading from '@/components/core/PageLoading.vue'
 import DefaultLayout from '@/layouts/defaultLayout.vue'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import {globalGameState, board, winner, connectSocket, MakeMove, playRematch} from '@/composables/games/tictactoe/useGameplay'
+import { enableReload, disableReload } from '@/composables/useUtils'
 
-onMounted(connectSocket)
+onMounted(()=>{
+	disableReload()
+	connectSocket()
+})
+onUnmounted(enableReload)
 
 
 
+const bc = new BroadcastChannel('test_channel')
+
+bc.onmessage = function (ev) { 
+	console.log('working')
+	console.log(ev)
+	if(ev.data && ev.data===window.location.href){
+		alert('You cannot open the same page in 2 tabs')
+	}
+}
+
+bc.postMessage(window.location.href)
 
 
 

@@ -3,7 +3,14 @@ export const playSound = (url) => {
     audio.play()
 }
 
-export const disableReload = () => {
-    addEventListener('beforeunload', (e) => e.preventDefault(), { capture: true })
+const beforeUnloadListener = (event) => {
+    event.preventDefault()
+    return event.returnValue = 'You are About to leave the room, automatic forfeit'
 }
-export const 
+
+export const disableReload = () => {
+    addEventListener('beforeunload', beforeUnloadListener, { capture: true })
+}
+export const enableReload = () => {
+    removeEventListener('beforeunload', beforeUnloadListener, { capture: true })
+}
