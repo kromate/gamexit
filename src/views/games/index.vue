@@ -17,13 +17,13 @@
 					:key="n"
 					:data-index="index"
 					class="overflow-hidden flex flex-col justify-center items-center hover:scale-[1.01]
-					 rounded-md shadow-md  bg-white w-[22rem]  max-w-[100%] border-4 border-blue"
+					 rounded-md shadow-md  bg-white w-[22rem]  max-w-[100%]  gradient-border"
 				>
-					<img :src="n.img" class="w-60">
+					<img :src="n.img" class="w-60 mt-2">
 
 					<p class="text-center font-medium text-2xl">TicTacToe</p>
 					
-					<router-link :to="n.link"	class="btn w-9/12 mb-7 m-5"	>Play</router-link>
+					<router-link :to="n.link"	class="btn w-9/12 mb-7 m-5 cursor-pointer"	>Play</router-link>
 					
 
 				</div>
@@ -57,7 +57,7 @@ const enter = (el, done) => {
 	gsap.to(el, {
 		opacity: 1,
 		y: 0,
-		duration: 0.5,
+		duration: 0.35,
 		onComplete: done,
 		delay: el.dataset.index * 0.1,
 	})
@@ -65,5 +65,36 @@ const enter = (el, done) => {
 </script>
 
 <style scoped>
+.gradient-border:before {
+    background-size: 400% auto;
+    border-radius: 6px;
+    bottom: 0;
+    content: "";
+    left: 0;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 1;
+    padding: 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background-position .3s ease-in-out,opacity .2s ease-in-out;
+    width: 100%;
+	z-index: -100;
+	   animation: hue 1.5s infinite linear;
+}
+.gradient-border:before {
+    background:  -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
+}
 
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
 </style>

@@ -17,19 +17,19 @@ class RoomHandler {
             socketRooms.length > 0 ||
             (connectedSockets && connectedSockets.size === 2)
         ) {
-            this.socket.emit('room_join_error', {
+            this.socket.emit('tic_room_join_error', {
                 status: 500,
                 error: 'Room is full please choose another room to play!',
             })
         } else {
             await this.socket.join(message.roomId)
-            this.socket.emit('room_joined')
+            this.socket.emit('tic_room_joined')
 
             if (this.io.sockets.adapter.rooms.get(message.roomId).size === 2) {
-                this.socket.emit('start_game', { start: true, symbol: 'x' })
+                this.socket.emit('tic_start_game', { start: true, symbol: 'x' })
                 this.socket
                     .to(message.roomId)
-                    .emit('start_game', { start: false, symbol: 'o' })
+                    .emit('tic_start_game', { start: false, symbol: 'o' })
             }
         }
     }
