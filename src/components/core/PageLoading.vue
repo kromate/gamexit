@@ -1,14 +1,17 @@
 <template>
 	<transition name="fade" appear>
-		<div class="flex min-h-screen items-center justify-center flex-col bg-[#ffffffc0] fixed z-50 inset-0" v-if="active">
-			<div class=" flex">
-				<div class="dash uno"></div>
-				<div class="dash dos"></div>
-				<div class="dash tres"></div>
-				<div class="dash cuatro"></div>
+		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0" v-if="active">
+			<div class="load">
+				<div>G</div>
+				<div>N</div>
+				<div>I</div>
+				<div>D</div>
+				<div>A</div>
+				<div>O</div>
+				<div>L</div>
 			</div>
 
-			<p class="text-2xl absolute mt-40 text-center max-w-[45rem] px-4">{{ message }}</p>
+			<p class="text-2xl absolute mt-40 text-center max-w-[45rem] px-4 text-white">{{ message }} </p>
 		</div>
 	
 	</transition>
@@ -23,78 +26,42 @@ const { active, message } = useLoading()
 <style scoped>
 
 
-.dash {
-  margin: 0 15px;
-  width: 35px;
-  height: 15px;
-  border-radius: 8px;
-  background: #8C72FF;
-
+.load {
+  position:absolute;
+  width:600px;
+  height:36px;
+  left:50%;
+  top:40%;
+  margin-left:-300px;
+  overflow:visible;
+  user-select:none;
+  cursor:default;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-.uno {
-  margin-right: -18px;
-  transform-origin: center left;
-  animation: spin 3s linear infinite;  
+.load div {
+  position:absolute;
+  width:20px;
+  height:36px;
+  opacity:0;
+  font-family:'Poppins', Arial, sans-serif;
+  animation:move 2s linear infinite;
+  transform:rotate(180deg);
+  color:#35C4F0;
 }
 
-.dos {
-  transform-origin: center right;
-  animation: spin2 3s linear infinite;
-  animation-delay: .2s;
-}
+.load div:nth-child(2) { animation-delay:0.2s;}
+.load div:nth-child(3) { animation-delay:0.4s;}
+.load div:nth-child(4) { animation-delay:0.6s;}
+.load div:nth-child(5) { animation-delay:0.8s;}
+.load div:nth-child(6) { animation-delay:1s;}
+.load div:nth-child(7) { animation-delay:1.2s; }
 
-.tres {
-  transform-origin: center right;
-  animation: spin3 3s linear infinite;
-  animation-delay: .3s;
-}
-
-.cuatro {
-  transform-origin: center right;
-  animation: spin4 3s linear infinite;
-  animation-delay: .4s;
-}
-
-@keyframes spin {
-  0% {transform: rotate(0deg); }
-  25% {transform: rotate(360deg);}
-  30% {transform: rotate(370deg);}
-  35% {transform: rotate(360deg);}
-  100% {transform: rotate(360deg);}
-}
-
-@keyframes spin2 {
-  0% {transform: rotate(0deg);}
-  20% {transform: rotate(0deg);}
-  30% {transform: rotate(-180deg);  }
-  35% {transform: rotate(-190deg);  }
-  40% {transform: rotate(-180deg);  }
-  78% {transform: rotate(-180deg);  }
-  95% {transform: rotate(-360deg);  }
-  98% {transform: rotate(-370deg);  }
-  100% {transform: rotate(-360deg);  }
-}
-
-@keyframes spin3 {
-  0% {transform: rotate(0deg);}
-  27% {transform: rotate(0deg); }
-  40% {transform: rotate(180deg);}
-  45% {transform: rotate(190deg);}
-  50% {transform: rotate(180deg);}
-  62% {transform: rotate(180deg);}
-  75% {transform: rotate(360deg);}
-  80% {transform: rotate(370deg);}
-  85% {transform: rotate(360deg);}
-  100% {transform: rotate(360deg);}
-}
-
-@keyframes spin4 {
-  0% {transform: rotate(0deg); }
-  38% {transform: rotate(0deg); }
-  60% {transform: rotate(-360deg); }
-  65% {transform: rotate(-370deg); }
-  75% {transform: rotate(-360deg); }
-  100% { transform: rotate(-360deg); }
+@keyframes move {
+  0% {left:0; opacity:0; }
+	35% {left: 41%; transform:rotate(0deg);	opacity:1;}
+	65% {	left:59%; transform:rotate(0deg); opacity:1;}
+	100% {left:100%; 	transform:rotate(-180deg); opacity:0;}
 }
 </style>
