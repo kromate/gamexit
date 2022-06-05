@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade" appear>
-		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0" v-if="active">
-			<div class="load">
+		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0" v-if="true">
+			<div class="load text-6xl">
 				<div>G</div>
 				<div>N</div>
 				<div>I</div>
@@ -48,7 +48,9 @@ const { active, message } = useLoading()
   font-family:'Poppins', Arial, sans-serif;
   animation:move 2s linear infinite;
   transform:rotate(180deg);
-  color:#35C4F0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color:#6CD3FF;
 }
 
 .load div:nth-child(2) { animation-delay:0.2s;}
