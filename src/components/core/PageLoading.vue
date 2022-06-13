@@ -1,6 +1,6 @@
 <template>
 	<transition name="fade" appear>
-		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0" v-if="true">
+		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0" v-if="active">
 			<div class="load text-6xl">
 				<div>G</div>
 				<div>N</div>
