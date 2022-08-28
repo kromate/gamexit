@@ -1,4 +1,5 @@
 <template>
+	<pageLoading/>
 	<DefaultLayout >
 		<NavBar  />
 		<section class="px-4   md:px-8  flex flex-col w-full min-h-screen justify-start items-center bg py-10">
@@ -41,10 +42,14 @@ import DefaultLayout from '@/layouts/defaultLayout.vue'
 import {GameList} from '@/composables/useGames'
 
 import { ref, onMounted } from 'vue'
+import { useLoading } from '../../composables/useNotification'
+
+useLoading().openLoading('Loading games...')
 
 const games = ref()
 onMounted(async () => {
 	games.value = await GameList()
+	useLoading().closeLoading()
 })
 
 
