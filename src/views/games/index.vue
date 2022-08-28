@@ -88,7 +88,6 @@ const enter = (el, done) => {
 .gradient-border:before {
     background:  -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
 }
-
 @keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);
