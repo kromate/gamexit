@@ -20,7 +20,7 @@
     "uuid": "^8.3.2",
     "vue": "^3.2.36",
     "vue-router": "4.0.15",
-    "vuedraggable": "^4.1.0"
+    "vuedraggable": "^4.1.0" 
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

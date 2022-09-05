@@ -1,60 +1,60 @@
 <template>
 	<DefaultLayout >
 		<NavBar  />
-		<section class="px-4 py-28  md:px-8 bg-transparent ">
-			<div class="container items-center  mx-auto">
-				<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
-					<div class="w-full md:w-1/2 md:px-3">
-						<div
-							class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0 select-none"
+		<section class="px-4 py-28  md:px-8 bg-transparent w-full container items-center  mx-auto">
+
+			<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
+				<div class="w-full md:w-1/2 md:px-3">
+					<div
+						class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0 select-none"
+					>
+						<h1
+							class="w-auto md:w-[35rem] text-4xl font-extrabold py-4 tracking-tight !leading-[0.95] text-blue sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl gradient"
 						>
-							<h1
-								class="w-auto md:w-[35rem] text-4xl font-extrabold py-4 tracking-tight !leading-[0.95] text-blue sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl gradient"
-							>
-								Have Fun With Friends Gaming
-							</h1> 
-							<p
-								class="mx-auto text-base text-white sm:max-w-md lg:text-xl md:max-w-3xl md:!leading-8"
-							>
-								Gamexit is a platform focused on connecting people using games play on the web. Create a 1v1 or tournament challenge and invite your friends
-							</p>
+							Have Fun With Friends Gaming
+						</h1> 
+						<p
+							class="mx-auto text-base text-white sm:max-w-md lg:text-xl md:max-w-3xl md:!leading-8"
+						>
+							Gamexit is a platform focused on connecting people using games play on the web. Create a 1v1 or tournament challenge and invite your friends
+						</p>
 						
-							<router-link
-								to="/games"
-								class="flex items-center w-fit px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
-							>
-								Get Started for Free 
-							</router-link>
-
-						</div>
-					</div>
-					<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
-					
-						<img
-							src="../assets/images/hero1.png"
-							class="absolute top-0 md:left-[25%]  floatT "
-						/>
-						<img
-							src="../assets/images/hero2.png"
-							class="absolute top-[-50px]  right-[-50px] md:top-0  md:right-0 xl:right-[15%]  floatT"
-						/>
-						<img
-							src="../assets/images/hero3.png"
-							class="absolute bottom-0 md:right-[20%] xl:right-[30%] floatB "
-						/>
-						<img
-							src="../assets/images/hero4.png"
-							class="absolute bottom-[-30px] left-[-100px] md:left-[-20px] xl:left-[10%] floatB md:bottom-0"
-						/>
-
-						<img
-							src="../assets/images/hero.png"
-							class="w-[24rem] "
-						/>
+						<router-link
+							to="/games"
+							class="flex items-center w-fit px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
+						>
+							Get Started for Free 
+						</router-link>
 
 					</div>
 				</div>
+				<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
+					
+					<img
+						src="../assets/images/hero1.png"
+						class="absolute top-0 md:left-[25%]  floatT "
+					/>
+					<img
+						src="../assets/images/hero2.png"
+						class="absolute top-[-50px]  right-[-50px] md:top-0  md:right-0 xl:right-[15%]  floatT"
+					/>
+					<img
+						src="../assets/images/hero3.png"
+						class="absolute bottom-0 md:right-[20%] xl:right-[30%] floatB "
+					/>
+					<img
+						src="../assets/images/hero4.png"
+						class="absolute bottom-[-30px] left-[-100px] md:left-[-20px] xl:left-[10%] floatB md:bottom-0"
+					/>
+
+					<img
+						src="../assets/images/hero.png"
+						class="w-[24rem] "
+					/>
+
+				</div>
 			</div>
+
 		</section>
 
 	</DefaultLayout>
