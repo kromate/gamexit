@@ -13,8 +13,8 @@ import tDraw from '@/assets/sounds/t-draw.wav'
 
 
 // const URL = 'https://gamexit.herokuapp.com/'
-const URL = 'https://gamexit-server.onrender.com/'
-// const URL = 'http://localhost:9000/'
+// const URL = 'https://gamexit-server.onrender.com/'
+const URL = 'http://localhost:9000/'
 
 export const board = ref([
 	['', '', ''],
