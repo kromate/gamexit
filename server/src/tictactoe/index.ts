@@ -8,7 +8,6 @@ export const tictactoeInit = (io: any, socket: any) => {
 	const handlerGames = new gameHandler(io, socket)
 
 	handlerSocket.connected()
-
 	socket.on('tic_join_game', (message) => {
 		handlerRooms.joinGame(message)
 	})

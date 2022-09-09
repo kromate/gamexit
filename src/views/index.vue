@@ -16,7 +16,7 @@
 						<p
 							class="mx-auto text-base text-white sm:max-w-md lg:text-xl md:max-w-3xl md:!leading-8"
 						>
-							Gamexit is a platform focused on connecting people using games play on the web. Create a 1v1 or tournament challenge and invite your friends
+							Gamexit is a platform focused on connecting people using games played on the web. Create a 1v1 or tournament challenge and invite your friends
 						</p>
 						
 						<router-link
