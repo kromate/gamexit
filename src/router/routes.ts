@@ -11,44 +11,37 @@ const getPath = (page: string[]) =>
     .replace(new RegExp("///", "g"), "/")
     .replace(new RegExp("//", "g"), "/");
 
-const makeRoute = async (page: string[]) => {
-  const path = "/" + getPath(page);
-  // to understand why we need to use several conditional statement here, see: https://github.com/vitejs/vite/issues/4945
-  if (page.length == 1) {
-    var { default: component } = await import(`../views/${page[0]}.vue`);
-  } else if (page.length == 2) {
-    var { default: component } = await import(
-      `../views/${page[0] + "/" + page[1]}.vue`
-    );
-  } else if (page.length == 3) {
-    var { default: component } = await import(
-      `../views/${page[0] + "/" + page[1] + "/" + page[2]}.vue`
-    );
-  } else if (page.length == 4) {
-    var { default: component } = await import(
-      `../views/${page[0] + "/" + page[1] + "/" + page[2] + "/" + page[3]}.vue`
-    );
-  }
+const getPageName = (path: string) => {
+  const originPath = path.split("/");
 
+  const name = originPath.reduce((total, curr) => {
+    return total + curr;
+  });
+  return name;
+};
+const makeRoute = async (page: string[], importFn: () => Promise<any>) => {
+  const path = "/" + getPath(page);
+  const { default: component } = await importFn();
   const { displayName = "", middlewares = [], name = "" } = component;
+
   return {
     path,
-    name,
     component,
+    name: getPageName(path),
     meta: { middlewares, displayName },
   };
 };
 
-const allViews = import.meta.glob("../views/**/*.vue");
-
-const allPages = Object.keys(allViews)
-  .map((key: string) => key.slice(9).replace(".vue", "").split("/"))
-  .map((path) => {
+const allPages = Object.entries(import.meta.glob("../views/**/*.vue"))
+  .map(([key, importFn]) => ({
+    path: key.slice(9).replace(".vue", "").split("/"),
+    importFn,
+  }))
+  .map(({ path, importFn }) => {
     let parent = null as null | string;
-
     const nestedIndex = path.findIndex((p) => p.startsWith("^"));
     if (nestedIndex > -1) parent = getPath(path.slice(0, nestedIndex));
-    return { parent, path };
+    return { parent, path, importFn };
   });
 
 const nestedPages = allPages.filter((page) => page.parent);
@@ -57,12 +50,12 @@ export const routes = allPages
   .filter((page) => !page.parent)
   .map(async (page) => {
     const path = getPath(page.path);
-    const childrenPages = nestedPages
-      .filter((p) => p.parent === path)
-      .map((p) => p.path);
+    const childrenPages = nestedPages.filter((p) => p.parent === path);
 
-    const route = await makeRoute(page.path);
-    const children = await Promise.all(childrenPages.map(makeRoute));
+    const route = await makeRoute(page.path, page.importFn);
+    const children = await Promise.all(
+      childrenPages.map((page) => makeRoute(page.path, page.importFn))
+    );
 
     return { ...route, children };
   });

@@ -1,4 +1,5 @@
 <template>
+	<pageLoading/>
 	<DefaultLayout >
 		<NavBar  />
 		<section class="px-4   md:px-8  flex flex-col w-full min-h-screen justify-start items-center bg py-10">
@@ -41,10 +42,14 @@ import DefaultLayout from '@/layouts/defaultLayout.vue'
 import {GameList} from '@/composables/useGames'
 
 import { ref, onMounted } from 'vue'
+import { useLoading } from '../../composables/useNotification'
+
+useLoading().openLoading('Loading games...')
 
 const games = ref()
 onMounted(async () => {
 	games.value = await GameList()
+	useLoading().closeLoading()
 })
 
 
@@ -85,6 +90,7 @@ const enter = (el, done) => {
 	z-index: -100;
 	   animation: hue 1.5s infinite linear;
 }
+
 .gradient-border:before {
     background:  -webkit-linear-gradient(245.29deg, #6DC1DC 13.32%, #A690FC 28.55%, #FC96BB 55.55%, #FFC397 84.12%);
 }

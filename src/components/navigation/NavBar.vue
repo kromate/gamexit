@@ -1,7 +1,7 @@
 <template>
 	<nav class="relative z-30  select-none">
 		<div
-			class="container flex flex-wrap items-center justify-between py-5 px-4 mx-auto md:flex-row max-w-7xl"
+			class="container flex flex-wrap items-center justify-between py-5 px-4 mx-auto md:flex-row "
 		>
 			<router-link
 				to="/"
@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 import { googleAuth, signOutUser } from '../../firebase/auth'
 import { useUser } from '../../composables/useGlobals'
 
