@@ -1,5 +1,4 @@
 <template>
-	<InGameNavBar />
 	<section class="pt-8 text-center text-white transition-all duration-500 relative">
 		<h1 class="text-5xl font-extrabold">
 			Tic Tac Toe
@@ -50,11 +49,13 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import InGameNavBar from '@/components/navigation/InGameNavBar.vue'
 import pageLoading from '@/components/core/PageLoading.vue'
 import { globalGameState, board, winner, connectSocket, MakeMove, playRematch } from '@/composables/games/tictactoe/useGameplay'
 import { enableReload, disableReload } from '@/composables/useUtils'
 
+definePageMeta({
+	layout: 'ingame'
+})
 onMounted(() => {
 	disableReload()
 	connectSocket()
