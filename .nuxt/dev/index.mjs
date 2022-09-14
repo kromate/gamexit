@@ -1,23 +1,23 @@
-globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/kromate/Desktop/gamexit_/node_modules/node-fetch-native/dist/polyfill.mjs';
+globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/kromate/Desktop/gamexit/node_modules/node-fetch-native/dist/polyfill.mjs';
 import { Server } from 'http';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
-import { provider, isWindows } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/std-env/dist/index.mjs';
-import { defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, eventHandler, useQuery } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/h3/dist/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/ohmyfetch/dist/node.mjs';
-import destr from 'file:///Users/kromate/Desktop/gamexit_/node_modules/destr/dist/index.mjs';
-import { createRouter as createRouter$1 } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/radix3/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/hookable/dist/index.mjs';
-import { hash } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/ohash/dist/index.mjs';
-import { parseURL, withQuery, joinURL } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/ufo/dist/index.mjs';
-import { createStorage } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/unstorage/dist/index.mjs';
-import _unstorage_drivers_fs from 'file:///Users/kromate/Desktop/gamexit_/node_modules/unstorage/dist/drivers/fs.mjs';
-import devalue from 'file:///Users/kromate/Desktop/gamexit_/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import { snakeCase } from 'file:///Users/kromate/Desktop/gamexit_/node_modules/scule/dist/index.mjs';
-import htmlTemplate from '/Users/kromate/Desktop/gamexit_/.nuxt/views/document.template.mjs';
+import { provider, isWindows } from 'file:///Users/kromate/Desktop/gamexit/node_modules/std-env/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, eventHandler, useQuery } from 'file:///Users/kromate/Desktop/gamexit/node_modules/h3/dist/index.mjs';
+import { createFetch as createFetch$1, Headers } from 'file:///Users/kromate/Desktop/gamexit/node_modules/ohmyfetch/dist/node.mjs';
+import destr from 'file:///Users/kromate/Desktop/gamexit/node_modules/destr/dist/index.mjs';
+import { createRouter as createRouter$1 } from 'file:///Users/kromate/Desktop/gamexit/node_modules/radix3/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/kromate/Desktop/gamexit/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/kromate/Desktop/gamexit/node_modules/hookable/dist/index.mjs';
+import { hash } from 'file:///Users/kromate/Desktop/gamexit/node_modules/ohash/dist/index.mjs';
+import { parseURL, withQuery, joinURL } from 'file:///Users/kromate/Desktop/gamexit/node_modules/ufo/dist/index.mjs';
+import { createStorage } from 'file:///Users/kromate/Desktop/gamexit/node_modules/unstorage/dist/index.mjs';
+import _unstorage_drivers_fs from 'file:///Users/kromate/Desktop/gamexit/node_modules/unstorage/dist/drivers/fs.mjs';
+import devalue from 'file:///Users/kromate/Desktop/gamexit/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { snakeCase } from 'file:///Users/kromate/Desktop/gamexit/node_modules/scule/dist/index.mjs';
+import htmlTemplate from '/Users/kromate/Desktop/gamexit/.nuxt/views/document.template.mjs';
 
 const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{}};
 const ENV_PREFIX = "NITRO_";
@@ -76,7 +76,7 @@ function timingMiddleware(_req, res, next) {
   next();
 }
 
-const serverAssets = [{"baseName":"server","dir":"/Users/kromate/Desktop/gamexit_/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/kromate/Desktop/gamexit/server/assets"}];
 
 const assets = createStorage();
 
@@ -90,10 +90,10 @@ const useStorage = () => storage;
 
 storage.mount('/assets', assets);
 
-storage.mount('root', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit_","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit_/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit_/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit_/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', _unstorage_drivers_fs({"driver":"fs","base":"/Users/kromate/Desktop/gamexit/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 const defaultCacheOptions = {
   name: "_",
@@ -314,11 +314,11 @@ const errorHandler = (async function errorhandler(_error, event) {
   event.res.end(html);
 });
 
-const _lazy_iGc594 = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_ZU9st0 = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_iGc594, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_iGc594, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_ZU9st0, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_ZU9st0, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -401,7 +401,7 @@ function publicAssetsURL(...path) {
   return path.length ? joinURL(publicBase, ...path) : publicBase;
 }
 
-const getClientManifest = () => import('/Users/kromate/Desktop/gamexit_/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('/Users/kromate/Desktop/gamexit/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSPARenderer = lazyCachedFunction(async () => {
   const clientManifest = await getClientManifest();
   const renderToString = (ssrContext) => {
