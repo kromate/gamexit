@@ -1,20 +1,22 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [
-		'./index.html',
-		'./src/**/*.{vue,js,ts,jsx,tsx}',
-		'./src/components/core/**/*.{vue,js,ts,jsx,tsx}',
-	],
-	theme: {
-		extend: {
+    content: [
+    "./src/components/**/*.{js,vue,ts}",
+    "./src/layouts/**/*.vue",
+    "./src/pages/**/*.vue",
+  ],
+  theme: {
+   		extend: {
 			colors: {
-				primary: '#8C72FF',
-				dark: '#15083E',
-				blue: '#6CD3FF',
-			},
-			boxShadow: {
-				block: '0 20px rgba(0,0,0,0.8)',
+				primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        white: 'var(--white)',
+				dark_blue: 'var(--dark_blue)',
+				grey: 'var(--grey)',
+				light_grey: 'var(--light_grey)',
+				purple: 'var(--purple)',
 			},
 		},
-	},
-	plugins: [],
+  },
+  plugins: [],
 }

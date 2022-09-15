@@ -2,47 +2,47 @@ module.exports = {
 	root: true,
 	env: {
 		browser: true,
-		node: true,
+		es2021: true,
+		node: true
 	},
-	extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'prettier', '@vue/typescript/recommended'],
+	extends: [
+		'eslint:recommended',
+		'plugin:vue/essential',
+		'plugin:@typescript-eslint/recommended',
+		'@nuxtjs/eslint-config-typescript'
+	],
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: 'latest',
+		parser: '@typescript-eslint/parser',
+		sourceType: 'module'
 	},
+	plugins: [
+		'vue',
+		'@typescript-eslint'
+	],
 	rules: {
-		'no-console': 'warn',
-		'no-debugger': 'warn',
-		'vue/no-deprecated-slot-attribute': 'off',
-		'@typescript-eslint/no-unused-vars': 'off',
-		'@typescript-eslint/no-non-null-assertion': 'off',
-		'@typescript-eslint/ban-ts-ignore': 'off',
-		'@typescript-eslint/no-var-requires': 'off',
-		'@typescript-eslint/interface-name-prefix': 'off',
-		'no-empty-function': 'off',
-		'no-undef': 'off',
-		'@typescript-eslint/no-empty-function': 'off',
-		'@typescript-eslint/no-explicit-any': 'off',
-		'@typescript-eslint/camelcase': 'off',
 		'vue/no-v-html': 'off',
-		'vue/multi-word-component-names':'off',
-		'@typescript-eslint/no-implicit-any': 'off',
-		'@typescript-eslint/member-delimiter-style': [
-			'off',
-			{
-				multiline: { delimiter: 'none', requireLast: false },
-				singleline: { delimiter: 'comma', requireLast: false },
-			},
-		],
-		'@typescript-eslint/no-use-before-define': 'off',
+		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-tabs': 'off',
+		'no-unused-vars': 'off',
+		'import/no-named-as-default': 'off',
+		'vue/no-template-shadow': 'off',
 		'no-var': 'error',
+		'unused-import': 'off',
+		'space-before-function-paren': 'off',
+		camelcase: 'off',
+		'accessor-pairs': 'off',
 		'no-use-before-define': 'off',
-		indent: ['warn', 'tab', { SwitchCase: 1 }],
-		'no-mixed-spaces-and-tabs': ['off', 'smart-tabs'],
-		semi: ['warn', 'never'],
-		quotes: ['warn', 'single'],
+		'@typescript-eslint/no-empty-function': 'off',
+		indent: ['off', 'tab', { SwitchCase: 1 }],
+		'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+		semi: ['error', 'never'],
+		quotes: ['error', 'single'],
 		'prefer-const': ['error'],
 		'arrow-parens': ['error', 'always'],
 		'no-return-assign': 'off',
+		'vue/multi-word-component-names': 'off',
 		curly: 'off',
 		'vue/html-indent': [
 			'warn',
@@ -52,23 +52,23 @@ module.exports = {
 				baseIndent: 1,
 				closeBracket: 0,
 				alignAttributesVertically: true,
-				ignores: [],
-			},
+				ignores: []
+			}
 		],
 		'vue/no-mutating-props': 'off',
 		'object-property-newline': 'off',
 		'require-atomic-updates': 'off',
-		'require-await': 'off',
+		'require-await': 'off'
 	},
 	overrides: [
 		{
 			files: [
 				'**/__tests__/*.{j,t}s?(x)',
-				'**/tests/unit/**/*.spec.{j,t}s?(x)',
+				'**/tests/unit/**/*.spec.{j,t}s?(x)'
 			],
 			env: {
-				jest: true,
-			},
-		},
-	],
+				jest: true
+			}
+		}
+	]
 }
