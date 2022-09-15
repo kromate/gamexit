@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,6 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
-
 
 ::-webkit-scrollbar {
   width: 5px; /* Remove scrollbar space */
@@ -41,7 +40,7 @@
   .card {
     @apply rounded-md shadow-xl bg-white;
   }
-  .badge{
-  @apply  text-xs px-3  rounded-full py-[0.2rem] flex justify-center items-center
+  .badge {
+    @apply text-xs px-3  rounded-full py-[0.2rem] flex justify-center items-center;
   }
 }
