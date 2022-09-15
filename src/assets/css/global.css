@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px; /* Remove scrollbar space */
+    height: 6px; /* Remove scrollbar space */
+    background: #7483bf4e; /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #8c72ff80;
+    border-radius: 40px;
+    cursor: pointer;
+}

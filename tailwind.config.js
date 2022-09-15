@@ -6,15 +6,14 @@ module.exports = {
     './src/pages/**/*.vue'
   ],
   theme: {
-   		extend: {
+    extend: {
 			colors: {
 				primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        white: 'var(--white)',
-				dark_blue: 'var(--dark_blue)',
-				grey: 'var(--grey)',
-				light_grey: 'var(--light_grey)',
-				purple: 'var(--purple)'
+        dark: 'var(--dark)',
+        blue: 'var(--blue)'
+      },
+      boxShadow: {
+				block: '0 20px rgba(0,0,0,0.8)'
 			}
 		}
   },
