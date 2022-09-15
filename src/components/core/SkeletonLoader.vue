@@ -2,23 +2,23 @@
 	<div
 		class="pulsate"
 		:style="{ width: width, height: height, 'border-radius': radius }"
-	></div>
+	/>
 </template>
 
 <script lang="ts" setup>
 defineProps({
 	width: {
 		default: '100%',
-		type: String,
+		type: String
 	},
 	height: {
 		default: '100%',
-		type: String,
+		type: String
 	},
 	radius: {
 		default: '0px',
-		type: String,
-	},
+		type: String
+	}
 })
 </script>
 

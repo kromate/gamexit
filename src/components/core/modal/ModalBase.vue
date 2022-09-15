@@ -8,8 +8,6 @@
 
 import { modal } from '@/composables/core/modals'
 
-
 const { stack, modals } = modal
-
 
 </script>

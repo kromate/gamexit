@@ -11,19 +11,16 @@
 				<button	class="btn-secondary" @click="shareGame()">
 					share
 				</button>
-			
 			</div>
-
-		
 		</div>
 	</nav>
 </template>
 
 <script setup lang="ts">
-import { useAlert } from '@/composables/useNotification'
 import { useShare, useClipboard } from '@vueuse/core'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useAlert } from '@/composables/useNotification'
 
 // console.log(`${location.href}/`)
 
@@ -38,17 +35,16 @@ const copyLink = () => {
 		'Seems something went wrong while trying to share, don\'t worry we copied it to your clipboard '
 	)
 }
-	
-const shareGame = () => {
 
+const shareGame = () => {
 	if (!isSupported) {
 		copyLink()
 	}
 	try {
 		share({
 			title: 'Gamexit',
-			text:'Play A Game on Gamexit',
-			url: location.href,
+			text: 'Play A Game on Gamexit',
+			url: location.href
 		})
 	} catch {
 		copyLink()
@@ -56,5 +52,3 @@ const shareGame = () => {
 }
 
 </script>
-
-

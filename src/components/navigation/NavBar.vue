@@ -6,25 +6,27 @@
 			<router-link
 				to="/"
 				class="relative flex items-center w-auto text-xl font-extrabold tracking-widest text-blue select-none"
-			>GAMEXIT.</router-link>
+			>
+				GAMEXIT.
+			</router-link>
 
 			<div
-				@click="showMenu = !showMenu"
 				class="flex flex-col items-center justify-center p-3 bg-white border-2 text-primary
 				 border-primary rounded-full cursor-pointer mobile text-lg"
+				@click="showMenu = !showMenu"
 			>
-				<i class="las la-bars " 	v-if="!showMenu"></i>
-				<i class="las la-times" v-else></i>
+				<i v-if="!showMenu" class="las la-bars " />
+				<i v-else class="las la-times" />
 			</div>
-
 
 			<transition name="slideUp">
 				<div v-if="showMenu" class="w-full gap-4 absolute bg-[#ffffff1f] shadow-2xl top-20 inset-x-0 p-4">
 					<router-link
 						to="/games"
 						class="btn rounded-none py-3 w-full"
-					>Games</router-link
 					>
+						Games
+					</router-link>
 					<button
 						class="btn rounded-none py-3 w-full mt-2"
 						@click="user ? signOutUser() : googleAuth()"
@@ -35,9 +37,13 @@
 			</transition>
 
 			<div class=" gap-4 pc">
-				<router-link to="/games" class="btn pc" v-if="user"
-				>Games</router-link
+				<router-link
+					v-if="user"
+					to="/games"
+					class="btn pc"
 				>
+					Games
+				</router-link>
 				<button
 					class="btn-secondary pc"
 					@click="user ? signOutUser() : googleAuth()"
@@ -52,16 +58,14 @@
 					{{ user ? "Log Out" : "Create Account" }}
 				</button>
 			</div>
-
-		
 		</div>
 	</nav>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { googleAuth, signOutUser } from '../../firebase/auth'
-import { useUser } from '../../composables/useGlobals'
+import { googleAuth, signOutUser } from '@/firebase/auth'
+import { useUser } from '@/composables/useGlobals'
 
 const { user } = useUser()
 

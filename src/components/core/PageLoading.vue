@@ -1,6 +1,6 @@
 <template>
 	<transition name="fade" appear>
-		<div class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0 bg" v-if="active">
+		<div v-if="active" class="flex min-h-screen items-center justify-center flex-col bg-[#2a2828a5] fixed z-50 inset-0 bg">
 			<div class="load text-6xl">
 				<div>G</div>
 				<div>N</div>
@@ -11,17 +11,17 @@
 				<div>L</div>
 			</div>
 
-			<p class="text-2xl absolute mt-40 text-center max-w-[45rem] px-4 text-white">{{ message }} </p>
+			<p class="text-2xl absolute mt-40 text-center max-w-[45rem] px-4 text-white">
+				{{ message }}
+			</p>
 		</div>
-	
 	</transition>
 </template>
 
 <script lang="ts" setup>
-import { useLoading } from '../../composables/useNotification'
+import { useLoading } from '@/composables/useNotification'
 const { active, message } = useLoading()
 </script>
-
 
 <style scoped>
 .bg{

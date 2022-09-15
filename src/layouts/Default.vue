@@ -1,5 +1,6 @@
 <template>
 	<div class="bg-dark min-h-screen overflow-hidden ">
+		<NavBar />
 		<PageLoading />
 		<Alert />
 		<slot />
@@ -10,6 +11,7 @@
 import { onMounted } from '@vue/runtime-core'
 import PageLoading from '@/components/core/PageLoading.vue'
 import Alert from '@/components/core/Alert.vue'
+import NavBar from '@/components/navigation/NavBar.vue'
 
 onMounted(() => {
 	const gradient = document.querySelector<HTMLElement>('.grad')

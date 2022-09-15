@@ -1,5 +1,4 @@
 <template>
-	<NavBar />
 	<section class="px-4 py-28  md:px-8 bg-transparent w-full container items-center  mx-auto">
 		<div class="flex flex-wrap-reverse items-center sm:-mx-3 justify-between">
 			<div class="w-full md:w-1/2 md:px-3">
@@ -17,12 +16,12 @@
 						Gamexit is a platform focused on connecting people using games played on the web. Create a 1v1 or tournament challenge and invite your friends
 					</p>
 
-					<router-link
+					<router-linkd
 						to="/games"
 						class="flex items-center w-fit px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
 					>
 						Get Started for Free
-					</router-link>
+					</router-linkd>
 				</div>
 			</div>
 			<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
