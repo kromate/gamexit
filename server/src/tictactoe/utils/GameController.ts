@@ -27,10 +27,6 @@ class GameHandler {
         const gameRoom = this.getSocketGameRoom(this.socket)
         this.socket.to(gameRoom).emit('tic_on_game_win', message)
     }
-
 }
-
-
-
 
 module.exports = GameHandler

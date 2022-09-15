@@ -19,7 +19,7 @@ class RoomHandler {
         ) {
             this.socket.emit('tic_room_join_error', {
                 status: 500,
-                error: 'Room is full please choose another room to play!',
+                error: 'Room is full please choose another room to play!'
             })
         } else {
             await this.socket.join(message.roomId)
@@ -33,10 +33,6 @@ class RoomHandler {
             }
         }
     }
-
 }
-
-
-
 
 module.exports = RoomHandler
