@@ -16,12 +16,12 @@
 						Gamexit is a platform focused on connecting people using games played on the web. Create a 1v1 or tournament challenge and invite your friends
 					</p>
 
-					<router-linkd
+					<router-link
 						to="/games"
 						class="flex items-center w-fit px-6 py-3 text-primary bg-white rounded-full font-medium hover:bg-primary hover:text-white"
 					>
 						Get Started for Free
-					</router-linkd>
+					</router-link>
 				</div>
 			</div>
 			<div class="w-full md:w-1/2  relative flex justify-center items-center p-6 mx-auto">
