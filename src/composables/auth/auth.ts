@@ -1,8 +1,6 @@
 import { useUser } from '../useGlobals'
-import { googleAuth } from '../../firebase/auth'
+import { googleAuth, signOutUser } from '@/firebase/auth'
 import { useAlert, useLoading } from '@/composables/useNotification'
-
-
 
 export const useSignin = () => {
     const googleSignin = async () => {
@@ -12,10 +10,12 @@ export const useSignin = () => {
         useLoading().closeLoading()
         useAlert().openAlert('You have successfully signed in 🥳')
     }
-    
+
     const signOut = async () => {
-        
+        useLoading().openLoading('Signing You out...😗')
+        await signOutUser()
+		useLoading().closeLoading()
     }
 
-    return { googleSignin }
+    return { googleSignin, signOut }
 }

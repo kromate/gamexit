@@ -29,7 +29,7 @@
 					</router-link>
 					<button
 						class="btn rounded-none py-3 w-full mt-2"
-						@click="user ? signOutUser() : googleSignin()"
+						@click="user ? signOut() : googleSignin()"
 					>
 						{{ user ? "Log Out" : "Sign in" }}
 					</button>
@@ -46,14 +46,14 @@
 				</router-link>
 				<button
 					class="btn-secondary pc"
-					@click="user ? signOutUser() : googleSignin()"
+					@click="user ? signOut() : googleSignin()"
 				>
 					{{ user ? "Log Out" : "Sign in" }}
 				</button>
 				<button
 					v-if="!user"
 					class="btn pc"
-					@click="user ? signOutUser() : googleSignin()"
+					@click="user ? signOut() : googleSignin()"
 				>
 					{{ user ? "Log Out" : "Create Account" }}
 				</button>
@@ -64,11 +64,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { signOutUser } from '@/firebase/auth'
 import { useUser } from '@/composables/useGlobals'
 import { useSignin } from '@/composables/auth/auth'
 
-const { googleSignin } = useSignin()
+const { googleSignin, signOut } = useSignin()
 
 const { user } = useUser()
 

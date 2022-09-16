@@ -33,16 +33,13 @@ export const googleAuth = async () => {
 	}
 }
 
-export const signOutUser = () => {
-	openLoading('Signing You out...😗')
-	signOut(auth)
-		.then(() => {
-			clearUser()
-			location.reload()
-			closeLoading()
-		})
-		.catch((error) => {
-			closeLoading()
-			openAlert(`Oops seems something went wrong 😕 : ${error.message}`)
-		})
+export const signOutUser = async () => {
+	try {
+		await signOut(auth)
+		useUser().clearUser()
+		location.reload()
+	} catch (error) {
+		closeLoading()
+		openAlert(`Oops seems something went wrong 😕 : ${error.message}`)
+	}
 }
