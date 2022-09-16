@@ -17,30 +17,20 @@ const { clearUser, saveUser } = useUser()
 const auth = getAuth(app)
 
 onAuthStateChanged(auth, (user) => {
-	if (user) {
-		saveUser(user)
-	} else {
-		clearUser()
-		// User is signed out
-		// ...
-	}
+	if (user) saveUser(user)
+	else clearUser()
 })
 
 const provider = new GoogleAuthProvider()
 
-export const googleAuth = () => {
-	openLoading('Logging you in... 🤩')
-	signInWithPopup(auth, provider)
-		.then((result) => {
-			closeLoading()
-			const user = result.user
-			saveUser(user)
-			openAlert('You have successfully signed in 🥳')
-		})
-		.catch((error) => {
-			closeLoading()
-			openAlert(`Oops seems something went wrong 😕 : ${error.message}`)
-		})
+export const googleAuth = async () => {
+	try {
+		const result = await signInWithPopup(auth, provider)
+		return result.user
+	} catch (error) {
+		closeLoading()
+		openAlert(`Oops seems something went wrong 😕 : ${error.message}`)
+	}
 }
 
 export const signOutUser = () => {
