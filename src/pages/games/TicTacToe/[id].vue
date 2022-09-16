@@ -54,7 +54,8 @@ import { globalGameState, board, winner, connectSocket, MakeMove, playRematch } 
 import { enableReload, disableReload } from '@/composables/useUtils'
 
 definePageMeta({
-	layout: 'ingame'
+	layout: 'ingame',
+	middleware: 'is-authenticated'
 })
 onMounted(() => {
 	disableReload()

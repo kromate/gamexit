@@ -1,4 +1,4 @@
-const SocketHandler = require('./utils/MainController')
+const SocketHandler = require('../core/MainController')
 const RoomHandler = require('./utils/RoomController')
 const GameHandler = require('./utils/GameController')
 

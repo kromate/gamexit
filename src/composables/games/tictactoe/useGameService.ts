@@ -7,9 +7,9 @@ export interface IStartGame {
 export type IPlayMatrix = Array<Array<number | null>>;
 
 class GameService {
-    public async joinGameRoom(socket: Socket | null, roomId: string): Promise<boolean> {
+    public async joinGameRoom(socket: Socket | null, roomId: string, userId:string): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            socket!.emit('tic_join_game', { roomId })
+            socket!.emit('tic_join_game', { roomId, userId })
             socket!.on('tic_room_joined', () => resolve(true))
             socket!.on('tic_room_join_error', (e) => reject(e))
         })
