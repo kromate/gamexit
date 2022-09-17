@@ -1,13 +1,11 @@
-const SocketHandler = require('../core/MainController')
-const RoomHandler = require('./utils/RoomController')
-const GameHandler = require('./utils/GameController')
+
+const RoomHandler = require('./RoomController')
+const GameHandler = require('./GameController')
 
 export const tictactoeInit = (io: any, socket: any) => {
-	const handlerSocket = new SocketHandler(io, socket)
 	const handlerRooms = new RoomHandler(io, socket)
 	const handlerGames = new GameHandler(io, socket)
 
-	handlerSocket.connected()
 	socket.on('tic_join_game', (message) => {
 		handlerRooms.joinGame(message)
 	})

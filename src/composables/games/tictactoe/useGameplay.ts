@@ -120,6 +120,7 @@ const CalculateWinner = (board) => {
 	}
 	return null
 }
+
 export const winner = computed(() => CalculateWinner(board.value.flat()))
 
 export const MakeMove = (x, y) => {
