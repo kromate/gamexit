@@ -11,6 +11,7 @@ class GameService {
         return new Promise((resolve, reject) => {
             socket!.emit('tic_join_game', { roomId, userId })
             socket!.on('tic_room_joined', () => resolve(true))
+            socket!.on('tic_room_rejoined', () => resolve(true))
             socket!.on('tic_room_join_error', (e) => reject(e))
             socket!.on('tic_multi_room_error', (e) => reject(e))
         })

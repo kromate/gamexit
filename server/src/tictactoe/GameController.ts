@@ -1,32 +1,80 @@
 import { Socket } from 'socket.io'
-
+const playerKey = { X: 'O', O: 'X' }
+const board = [
+	['', '', ''],
+	['', '', ''],
+	['', '', '']
+]
+type Player = 'X' | 'O' | ''
 class GameHandler {
-    io: any
-    socket: any
+	io: any
+	socket: any
+	player: Player
 
-    constructor(io, socket) {
-        this.io = io
-        this.socket = socket
-    }
+	constructor(io, socket) {
+		this.io = io
+		this.socket = socket
+		this.player = ''
+	}
 
-    getSocketGameRoom(socket: Socket): string {
-        const socketRooms = Array.from(socket.rooms.values()).filter(
-            (r) => r !== socket.id
-        )
-        const gameRoom = socketRooms && socketRooms[0]
+	getSocketGameRoom(socket: Socket): string {
+		const socketRooms = Array.from(socket.rooms.values()).filter(
+			(r) => r !== socket.id
+		)
+		const gameRoom = socketRooms && socketRooms[0]
 
-        return gameRoom
-    }
+		return gameRoom
+	}
 
-    updateGame(message) {
-        const gameRoom = this.getSocketGameRoom(this.socket)
-        this.socket.to(gameRoom).emit('tic_on_game_update', message)
-    }
+	async updateGame(message) {
+        if (await this.updateBoard(message.matrix[0], message.matrix[1], message.matrix[2])) return
+        this.player = playerKey[message.matrix[2]]
+		const gameRoom = this.getSocketGameRoom(this.socket)
+		this.socket.to(gameRoom).emit('tic_on_game_update', message)
+	}
 
-    gameWin(message) {
-        const gameRoom = this.getSocketGameRoom(this.socket)
-        this.socket.to(gameRoom).emit('tic_on_game_win', message)
-    }
+	gameWin(message) {
+		const gameRoom = this.getSocketGameRoom(this.socket)
+		this.socket.to(gameRoom).emit('tic_on_game_win', message)
+	}
+
+    CalculateWinner = async(board) => {
+        console.log('calculating')
+        console.log(board)
+		const lines = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		]
+		for (let i = 0; i < lines.length; i++) {
+			const [a, b, c] = lines[i]
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                console.log('The winner is', board[a])
+				return board[a]
+			}
+		}
+
+        if (!board.includes('')) {
+            console.log('Ended in a draw')
+			this.socket.emit('tic_on_game_draw')
+			return true
+        }
+         console.log('calculating.....end')
+		return null
+	}
+
+    updateBoard = async (x:number, y:number, player:Player) => {
+		if (board[x][y]) return true
+        board[x][y] = player
+        if (await this.CalculateWinner(board.flat())) return true
+
+        return false
+	}
 }
 
 module.exports = GameHandler

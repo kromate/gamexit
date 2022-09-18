@@ -58,7 +58,7 @@ definePageMeta({
 	middleware: 'is-authenticated'
 })
 onMounted(() => {
-	disableReload()
+	// disableReload()
 	connectSocket()
 })
 onUnmounted(enableReload)
