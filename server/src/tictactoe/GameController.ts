@@ -5,7 +5,7 @@ const board = [
 	['', '', ''],
 	['', '', '']
 ]
-type Player = 'X' | 'O' | ''
+type Player = 'X' | 'O' | '';
 class GameHandler {
 	io: any
 	socket: any
@@ -27,20 +27,27 @@ class GameHandler {
 	}
 
 	async updateGame(message) {
-        if (await this.updateBoard(message.matrix[0], message.matrix[1], message.matrix[2])) return
-        this.player = playerKey[message.matrix[2]]
+		if (
+			await this.updateBoard(
+				message.matrix[0],
+				message.matrix[1],
+				message.matrix[2]
+			)
+		)
+			return
+		this.player = playerKey[message.matrix[2]]
 		const gameRoom = this.getSocketGameRoom(this.socket)
-		this.socket.to(gameRoom).emit('tic_on_game_update', message)
+		this.socket.to(gameRoom).emit('tic_on_game_update', board)
 	}
 
 	gameWin(message) {
 		const gameRoom = this.getSocketGameRoom(this.socket)
-		this.socket.to(gameRoom).emit('tic_on_game_win', message)
+		this.socket.to(gameRoom).emit('tic_on_game_win', { message, board })
 	}
 
-    CalculateWinner = async(board) => {
-        console.log('calculating')
-        console.log(board)
+	CalculateWinner = async (board) => {
+		console.log('calculating')
+		console.log(board)
 		const lines = [
 			[0, 1, 2],
 			[3, 4, 5],
@@ -53,27 +60,27 @@ class GameHandler {
 		]
 		for (let i = 0; i < lines.length; i++) {
 			const [a, b, c] = lines[i]
-            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                console.log('The winner is', board[a])
+			if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+				console.log('The winner is', board[a])
 				return board[a]
 			}
 		}
 
-        if (!board.includes('')) {
-            console.log('Ended in a draw')
+		if (!board.includes('')) {
+			console.log('Ended in a draw')
 			this.socket.emit('tic_on_game_draw')
 			return true
-        }
-         console.log('calculating.....end')
+		}
+		console.log('calculating.....end')
 		return null
 	}
 
-    updateBoard = async (x:number, y:number, player:Player) => {
+	updateBoard = async (x: number, y: number, player: Player) => {
 		if (board[x][y]) return true
-        board[x][y] = player
-        if (await this.CalculateWinner(board.flat())) return true
+		board[x][y] = player
+		if (await this.CalculateWinner(board.flat())) return true
 
-        return false
+		return false
 	}
 }
 

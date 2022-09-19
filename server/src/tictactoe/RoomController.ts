@@ -3,6 +3,7 @@
 // if that
 
 const rooms: Record<string, string[]> = {}
+const isPlaying: Record<string, boolean> = {}
 
 class RoomHandler {
 	io: any
@@ -31,6 +32,7 @@ class RoomHandler {
 		this.io.to(message.roomId).emit('tic_room_joined')
 
 		if (this.io.sockets.adapter.rooms.get(message.roomId).size === 2) {
+			isPlaying[message.userId] = true
 			this.socket.emit('tic_start_game', { start: true, symbol: 'x' })
 			this.socket
 				.to(message.roomId)
@@ -52,7 +54,7 @@ class RoomHandler {
 	}
 
 	private isPlayerAlreadyInGame(roomId, playerId) {
-		if (rooms[roomId].includes(playerId)) {
+		if (rooms[roomId].includes(playerId) && isPlaying[playerId]) {
 			this.socket.emit('tic_room_rejoined')
 			return true
 		} else {

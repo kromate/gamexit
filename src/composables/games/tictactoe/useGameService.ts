@@ -25,7 +25,7 @@ class GameService {
         socket: Socket,
         listener: (matrix: IPlayMatrix) => void
     ) {
-        socket.on('tic_on_game_update', ({ matrix }) => listener(matrix))
+        socket.on('tic_on_game_update', (board) => listener(board))
     }
 
     public async onStartGame(
@@ -40,7 +40,7 @@ class GameService {
     }
 
     public async onGameWin(socket: Socket, listener: (message: string) => void) {
-        socket.on('tic_on_game_win', ({ message }) => listener(message))
+        socket.on('tic_on_game_win', (message) => listener(message))
     }
 
     public async gameRematch(socket: Socket, message: string) {

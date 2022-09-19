@@ -54,7 +54,7 @@ const handleGameStart = () => {
 const handleGameUpdate = () => {
 	if (socketService.socket)
 		gameService.onGameUpdate(socketService.socket, (pos) => {
-			updateBoard(pos[0], pos[1], pos[2])
+			updateBoard(pos)
 		})
 }
 
@@ -74,6 +74,7 @@ const handleGameWin = () => {
 		gameService.onGameWin(socketService.socket, (message) => {
 			console.log(message)
 			console.log(typeof message)
+			// board.value = boardValue
 			if (message === '0') playSound(tLose)
 			else if (message === '1') playSound(tDraw)
 		})
@@ -132,11 +133,13 @@ export const MakeMove = (x, y) => {
 	globalGameState.disableAll.value = true
 }
 
-const updateBoard = (x, y, player) => {
-	if (winner.value) return
-	if (board.value[x][y]) return
+const updateBoard = (boardValue) => {
+	console.log(board.value)
+	board.value = boardValue
 	playSound(clickSound)
-	board.value[x][y] = player
+	if (winner.value) return
+	// if (board.value[x][y]) return
+
 	globalGameState.disableAll.value = false
 }
 
