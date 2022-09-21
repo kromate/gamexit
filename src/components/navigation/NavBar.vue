@@ -29,16 +29,16 @@
 					</router-link>
 					<button
 						class="btn rounded-none py-3 w-full mt-2"
-						@click="user ? signOut() : googleSignin()"
+						@click="isLoggedIn ? signOut() : googleSignin()"
 					>
-						{{ user ? "Log Out" : "Sign in" }}
+						{{ isLoggedIn ? "Log Out" : "Sign in" }}
 					</button>
 				</div>
 			</transition>
 
 			<div class=" gap-4 pc">
 				<router-link
-					v-if="user"
+					v-if="isLoggedIn"
 					to="/games"
 					class="btn pc"
 				>
@@ -46,16 +46,16 @@
 				</router-link>
 				<button
 					class="btn-secondary pc"
-					@click="user ? signOut() : googleSignin()"
+					@click="isLoggedIn ? signOut() : googleSignin()"
 				>
-					{{ user ? "Log Out" : "Sign in" }}
+					{{ isLoggedIn ? "Log Out" : "Sign in" }}
 				</button>
 				<button
-					v-if="!user"
+					v-if="!isLoggedIn"
 					class="btn pc"
-					@click="user ? signOut() : googleSignin()"
+					@click="isLoggedIn ? signOut() : googleSignin()"
 				>
-					{{ user ? "Log Out" : "Create Account" }}
+					{{ isLoggedIn ? "Log Out" : "Create Account" }}
 				</button>
 			</div>
 		</div>
@@ -64,13 +64,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useUser } from '@/composables/useGlobals'
 import { useSignin } from '@/composables/auth/auth'
-
+import { useUser } from '@/composables/auth/user'
 const { googleSignin, signOut } = useSignin()
 
-const { user } = useUser()
-
+const { isLoggedIn } = useUser()
+console.log(isLoggedIn)
 const showMenu = ref(false)
 </script>
 

@@ -9,10 +9,13 @@ import clickSound from '@/assets/sounds/click.wav'
 import tWin from '@/assets/sounds/t-win.wav'
 import tLose from '@/assets/sounds/t-lose.wav'
 import tDraw from '@/assets/sounds/t-draw.wav'
+import { useUser } from '@/composables/auth/user'
 
 // const URL = 'https://gamexit.herokuapp.com/'
 // const URL = 'https://gamexit-server.onrender.com/'
 const URL = 'http://localhost:9000/'
+
+const { id: userId } = useUser()
 
 export const board = ref([
 	['', '', ''],
@@ -30,12 +33,13 @@ export const globalGameState = {
 const joinRoom = async (id) => {
 	const socket = socketService.socket
 	const joined = await gameService
-		.joinGameRoom(socket, id as string)
+		.joinGameRoom(socket, id as string, userId.value)
 		.catch((err) => {
 			alert(err.error)
 		})
 	if (joined) useLoading().closeLoading()
 }
+
 const handleGameStart = () => {
 	if (socketService.socket)
 		gameService.onStartGame(socketService.socket, (options) => {
@@ -46,12 +50,14 @@ const handleGameStart = () => {
 			globalGameState.player.value = options.symbol
 		})
 }
+
 const handleGameUpdate = () => {
 	if (socketService.socket)
 		gameService.onGameUpdate(socketService.socket, (pos) => {
-			updateBoard(pos[0], pos[1], pos[2])
+			updateBoard(pos)
 		})
 }
+
 const updateGameMatrix = (pos) => {
 	if (socketService.socket) {
 		gameService.updateGame(socketService.socket, pos)
@@ -68,6 +74,7 @@ const handleGameWin = () => {
 		gameService.onGameWin(socketService.socket, (message) => {
 			console.log(message)
 			console.log(typeof message)
+			// board.value = boardValue
 			if (message === '0') playSound(tLose)
 			else if (message === '1') playSound(tDraw)
 		})
@@ -114,6 +121,7 @@ const CalculateWinner = (board) => {
 	}
 	return null
 }
+
 export const winner = computed(() => CalculateWinner(board.value.flat()))
 
 export const MakeMove = (x, y) => {
@@ -125,11 +133,13 @@ export const MakeMove = (x, y) => {
 	globalGameState.disableAll.value = true
 }
 
-const updateBoard = (x, y, player) => {
-	if (winner.value) return
-	if (board.value[x][y]) return
+const updateBoard = (boardValue) => {
+	console.log(board.value)
+	board.value = boardValue
 	playSound(clickSound)
-	board.value[x][y] = player
+	if (winner.value) return
+	// if (board.value[x][y]) return
+
 	globalGameState.disableAll.value = false
 }
 

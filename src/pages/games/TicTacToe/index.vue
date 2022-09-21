@@ -23,6 +23,11 @@ import { gsap } from 'gsap'
 import { v4 as uuidv4 } from 'uuid'
 import NavBar from '@/components/navigation/NavBar.vue'
 
+definePageMeta({
+	layout: 'default',
+	middleware: 'is-authenticated'
+})
+
 const beforeEnter = (el) => {
 	el.style.opacity = 0
 	el.style.transform = 'translateY(100px)'

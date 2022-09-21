@@ -7,11 +7,13 @@ export interface IStartGame {
 export type IPlayMatrix = Array<Array<number | null>>;
 
 class GameService {
-    public async joinGameRoom(socket: Socket | null, roomId: string): Promise<boolean> {
+    public async joinGameRoom(socket: Socket | null, roomId: string, userId:string): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            socket!.emit('tic_join_game', { roomId })
+            socket!.emit('tic_join_game', { roomId, userId })
             socket!.on('tic_room_joined', () => resolve(true))
+            socket!.on('tic_room_rejoined', () => resolve(true))
             socket!.on('tic_room_join_error', (e) => reject(e))
+            socket!.on('tic_multi_room_error', (e) => reject(e))
         })
     }
 
@@ -23,7 +25,7 @@ class GameService {
         socket: Socket,
         listener: (matrix: IPlayMatrix) => void
     ) {
-        socket.on('tic_on_game_update', ({ matrix }) => listener(matrix))
+        socket.on('tic_on_game_update', (board) => listener(board))
     }
 
     public async onStartGame(
@@ -38,7 +40,7 @@ class GameService {
     }
 
     public async onGameWin(socket: Socket, listener: (message: string) => void) {
-        socket.on('tic_on_game_win', ({ message }) => listener(message))
+        socket.on('tic_on_game_win', (message) => listener(message))
     }
 
     public async gameRematch(socket: Socket, message: string) {

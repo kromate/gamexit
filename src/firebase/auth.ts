@@ -3,21 +3,22 @@ import {
 	GoogleAuthProvider,
 	signInWithPopup,
 	onAuthStateChanged,
-	signOut
+	signOut,
+	User
 } from 'firebase/auth'
 import { app } from './init'
 // eslint-disable-next-line import/named
 import { useAlert, useLoading } from '@/composables/useNotification'
-import { useUser } from '@/composables/useGlobals'
+import { useUser } from '@/composables/auth/user'
 
 const { openAlert } = useAlert()
-const { openLoading, closeLoading } = useLoading()
-const { clearUser, saveUser } = useUser()
+const { closeLoading } = useLoading()
+const { clearUser, setUser } = useUser()
 
 const auth = getAuth(app)
 
 onAuthStateChanged(auth, (user) => {
-	if (user) saveUser(user)
+	if (user) setUser(user)
 	else clearUser()
 })
 
@@ -26,7 +27,7 @@ const provider = new GoogleAuthProvider()
 export const googleAuth = async () => {
 	try {
 		const result = await signInWithPopup(auth, provider)
-		return result.user
+		return result.user as User
 	} catch (error) {
 		closeLoading()
 		openAlert(`Oops seems something went wrong 😕 : ${error.message}`)

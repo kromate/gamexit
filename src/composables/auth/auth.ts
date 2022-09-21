@@ -1,4 +1,5 @@
-import { useUser } from '../useGlobals'
+import { FirebaseUserType } from './types'
+import { useUser } from '@/composables/auth/user'
 import { googleAuth, signOutUser } from '@/firebase/auth'
 import { useAlert, useLoading } from '@/composables/useNotification'
 
@@ -6,7 +7,7 @@ export const useSignin = () => {
     const googleSignin = async () => {
         useLoading().openLoading('Logging you in... 🤩')
         const user = await googleAuth()
-        useUser().saveUser(user)
+        useUser().setUser(user)
         useLoading().closeLoading()
         useAlert().openAlert('You have successfully signed in 🥳')
     }
