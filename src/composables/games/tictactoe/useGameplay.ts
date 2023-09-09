@@ -12,8 +12,8 @@ import tDraw from '@/assets/sounds/t-draw.wav'
 import { useUser } from '@/composables/auth/user'
 
 // const URL = 'https://gamexit.herokuapp.com/'
-// const URL = 'https://gamexit-server.onrender.com/'
-const URL = 'http://localhost:9000/'
+const URL = 'https://gamexit-server.onrender.com/'
+// const URL = 'http://localhost:9000/'
 
 const { id: userId } = useUser()
 
