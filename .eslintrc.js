@@ -26,6 +26,7 @@ module.exports = {
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-tabs': 'off',
 		'vue/no-deprecated-slot-attribute': 'off',
+		'n/handle-callback-err': 'off',
 		'@typescript-eslint/no-unused-vars': 'off',
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/ban-ts-ignore': 'off',
