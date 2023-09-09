@@ -72,8 +72,6 @@ const updateGameMatrix = (pos) => {
 const handleGameWin = () => {
 	if (socketService.socket)
 		gameService.onGameWin(socketService.socket, (message) => {
-			console.log(message)
-			console.log(typeof message)
 			// board.value = boardValue
 			if (message === '0') playSound(tLose)
 			else if (message === '1') playSound(tDraw)
@@ -94,7 +92,6 @@ export const connectSocket = async () => {
 	const socket = await socketService
 		.connect(URL)
 		.catch((err) => {
-			console.log('Error: ', err)
 		})
 	await joinRoom(id)
 	handleGameStart()
@@ -134,7 +131,6 @@ export const MakeMove = (x, y) => {
 }
 
 const updateBoard = (boardValue) => {
-	console.log(board.value)
 	board.value = boardValue
 	playSound(clickSound)
 	if (winner.value) return

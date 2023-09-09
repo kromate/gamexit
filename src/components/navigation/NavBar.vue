@@ -69,7 +69,6 @@ import { useUser } from '@/composables/auth/user'
 const { googleSignin, signOut } = useSignin()
 
 const { isLoggedIn } = useUser()
-console.log(isLoggedIn)
 const showMenu = ref(false)
 </script>
 
